@@ -36,7 +36,7 @@
 <body>
 	<div class="wrapper">
 		<div class="sidebar">
-			<?php include("../php/sideBarInstructor.php") ?>
+			<?php include("../templates/sideBarInstructor.php") ?>
 		</div>
 		<div class="main_content">
 			<div class="header">Welcome!! Have a nice day.</div>  

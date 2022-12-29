@@ -163,4 +163,3 @@ const createNewQuestion = (type) => {
 add_question_button.addEventListener("click", () => {
 	createNewQuestion(question_type.value);
 });
-
