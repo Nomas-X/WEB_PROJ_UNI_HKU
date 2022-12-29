@@ -101,40 +101,38 @@ const createNewQuestion = (type) => {
 			createQuestionFields(new_question, type);
 			addRemoveButton(new_question);
 	
-			let correct_options = document.createElement("p");
+			let correct_answer = document.createElement("p");
 	
-			correct_options.innerHTML = "Select the correct answer:";
-			correct_options.classList = "correct_option_p";
-			new_question.appendChild(correct_options);
-			new_question.insertBefore(correct_options, new_question.children[number_of_answers + 2]);
+			correct_answer.innerHTML = "Select the correct answer:";
+			correct_answer.classList = "correct_option_p";
+			new_question.appendChild(correct_answer);
+			new_question.insertBefore(correct_answer, new_question.children[number_of_answers + 2]);
 
 
 		} else if (type === "multiple_choices") {
 			createQuestionFields(new_question, type);
-	
-			let correct_options = document.createElement("p");
-	
-			correct_options.innerHTML = "Select the correct answers:";
-			correct_options.classList = "correct_option_p";
-			new_question.appendChild(correct_options);
-
 			addRemoveButton(new_question);
+
+			let correct_answer = document.createElement("p");
+	
+			correct_answer.innerHTML = "Select the correct answers:";
+			correct_answer.classList = "correct_option_p";
+			new_question.appendChild(correct_answer);
+			new_question.insertBefore(correct_answer, new_question.children[number_of_answers + 2]);
 
 		} else if (type === "order_answers") {
 			createQuestionFields(new_question, type);
-	
-			let correct_order = document.createElement("p");
-	
-			correct_order.innerHTML = "Enter the correct order:";
-			correct_order.classList = "correct_order_p";
-			new_question.appendChild(correct_order);
-
 			addRemoveButton(new_question);
+
+			let correct_answer = document.createElement("p");
+	
+			correct_answer.innerHTML = "Enter the correct order:";
+			correct_answer.classList = "correct_option_p";
+			new_question.appendChild(correct_answer);
+			new_question.insertBefore(correct_answer, new_question.children[number_of_answers + 2]);
 
 		} else if (type === "fill_blank") {
 			createQuestionFields(new_question, type);
-			
-
 			addRemoveButton(new_question);
 
 		} else if (type === "essay") {
