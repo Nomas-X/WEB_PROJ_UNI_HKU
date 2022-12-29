@@ -156,6 +156,12 @@ body{
 	font-size: medium;
 }
 
+.question_grade {
+	width: 3em;
+	margin-left: 0;
+	margin-right: 0;
+}
+
 .change_button, .login_button, .add_question_active, .create_exam {
 	margin-left: 1em;
 	font-size: 1em;
@@ -262,7 +268,7 @@ tr:nth-child(even) {
 	margin-bottom: 1em;
 }
 
-.correct_option_p, .correct_order_p {
+.correct_option_p, .correct_order_p, .grade_p {
 	margin-top: 0.5em;
 }
 

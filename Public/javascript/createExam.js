@@ -58,7 +58,7 @@ const createQuestionFields = (question, type) => {
 		}
 
 		for (let i = 0; i < number_of_answers; i += 1) {
-			let correct_option_selector = document.createElement('input');
+			let correct_option_selector = document.createElement('input'); 
 			let answer_label = document.createElement("label");
 		
 			answer_label.classList.add("answer_label");
@@ -86,6 +86,18 @@ const createQuestionFields = (question, type) => {
 		answer_field.placeholder = "Correct Answer";
 		question.appendChild(answer_field);
 	}
+
+	let grade_field_label = document.createElement("p");
+	let grade_field = document.createElement("input");
+
+	grade_field_label.innerHTML = "Question's grade out of 100:";
+	grade_field_label.classList.add("grade_p");
+	question.appendChild(grade_field_label);
+	grade_field.classList.add("question_grade");
+	grade_field.type = "number";
+	grade_field.min = "1";
+	grade_field.max = "100";
+	question.appendChild(grade_field);
 }
 
 // Function to handle the creation of the question and answers fields and elements.
