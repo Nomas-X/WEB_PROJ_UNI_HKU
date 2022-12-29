@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body{
+   background-color: #f3f5f9;
+}
+
+.wrapper{
+  display: flex;
+  position: relative;
+}
+
+.wrapper .sidebar{
+  width: 200px;
+  height: 100%;
+  background: #4189e6;
+  padding: 30px 0px;
+  position: fixed;
+}
+
+.wrapper .sidebar h2{
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.wrapper .sidebar ul li{
+  padding: 15px;
+  border-bottom: 1px solid #bdb8d7;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}    
+
+.wrapper .sidebar ul li a{
+  color: #bdb8d7;
+  display: block;
+}
+
+.wrapper .sidebar ul li a .fas{
+  width: 25px;
+  color: white;
+}
+
+.wrapper .sidebar ul li:hover{
+  background-color: #2b69bb;
+}
+    
+.wrapper .sidebar ul li:hover a{
+  color: #fff;
+}
+ 
+.wrapper .sidebar .social_media{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.wrapper .sidebar .social_media a{
+  display: block;
+  width: 40px;
+  background: #2b69bb;
+  height: 40px;
+  line-height: 45px;
+  text-align: center;
+  margin: 0 5px;
+  color: #bdb8d7;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.wrapper .main_content{
+  width: 100%;
+  margin-left: 200px;
+}
+
+.wrapper .main_content .header{
+  padding: 20px;
+  background: #fff;
+  color: #717171;
+  border-bottom: 1px solid #e0e4e8;
+}
+
+.wrapper .main_content .info{
+  margin: 20px;
+  color: #717171;
+  line-height: 25px;
+}
+
+.wrapper .main_content .info div{
+  margin-bottom: 20px;
+}
+
+.prof_inputs {
+	width: 20%;
+	font-size: x-large;
+}
+
+.add_student_inputs {
+	display: block;
+	width: 20%;
+	font-size: larger;
+	margin-right: 1em;
+	margin-bottom: 0.9em;
+}
+
+.create_inputs {
+	width: 40%;
+	font-size: larger;
+	margin: 1em;
+	display: block;
+	padding-top: 0.2em;
+}
+
+.login_inputs {
+	width: 20%;
+	font-size: large;
+}
+
+.login_labels {
+	display: block;
+}
+
+.new_question_inputs {
+	display: block;
+	width: 60%;
+	height: 2em;
+	font-size: large;
+	margin-top: 1em;
+	padding-left: 0.5em;
+}
+
+.new_question_answers_inputs {
+	display: block;
+	width: 20%;
+	height: 2em;
+	font-size: medium;
+	margin-top: 0.5em;
+	padding-left: 0.5em;
+}
+
+.correct_answer_radio, .correct_answer_checkbox, .correct_answer_order, .question_grade {
+	margin-right: 0.5em;
+	margin-left: 0.5em;
+	width: 1.5em;
+	font-size: medium;
+}
+
+.change_button, .login_button, .add_question_active, .create_exam {
+	margin-left: 1em;
+	font-size: 1em;
+	background-color: #4189e6;
+	display: inline-block;
+	padding: 10px 15px;
+	padding-bottom: 5px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #4189e6;
+	border: none;
+}
+.login_button {
+	margin: 0;
+	font-size: 1.5em;
+}
+
+.create_exam {
+	display: table;
+	margin: 0 auto;
+}
+
+.add_question_inactive {
+	margin-left: 1em;
+	font-size: 1em;
+	background-color: #7d7e80;
+	display: inline-block;
+	padding: 10px 15px;
+	padding-bottom: 5px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #7d7e80;
+	border: none;
+}
+
+.add_question_inactive:hover {
+	cursor: not-allowed;
+}
+
+.add_student_button {
+	font-size: 1em;
+	background-color: #4189e6;
+	display: inline-block;
+	padding: 7px 15px;
+	padding-bottom: 5px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #4189e6;
+	border: none;
+}
+
+.change_button:hover, .add_student_button:hover, .login_button:hover, .add_question_active:hover, .create_exam:hover {
+	background-color: #2b69bb
+}
+
+.change_button:active, .add_student_button:active, .login_button:active, .add_question_active:active, .create_exam:active {
+	background-color: #2b69bb;
+	transform: translateY(2px);
+}
+
+.question_delete_icon {
+	color: #d40000;
+}
+
+.delete_icon:hover, .question_delete_icon:hover {
+	cursor: pointer;
+}
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+  
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+.tableCaption {
+	font-size: x-large;
+	margin-bottom: 0.4em;
+	text-decoration: underline;
+}
+
+.questions_seperator {
+	width: 40%;
+	display: table;
+	margin: 0 auto;
+	margin-bottom: 1em;
+}
+
+.correct_option_p, .correct_order_p {
+	margin-top: 0.5em;
+}
+
+.delete_question_button {
+	display: block;
+}
+
+.center {
+	padding:  3em;
+	text-align: center;
+}
+
+.std_add_error {
+	color: black;
+	background-color: #df9393;
+	width: 50%;
+	margin-bottom: 0px !important;
+	margin-top: 0px !important;
+	font-size: small;
+}
+
+.login_error {
+	color: red;
+	font-size: small;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.delete_student {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: red;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 1em;
+	padding: 1em;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	width: 5em;
+	transition: all 0.5s;
+	cursor: pointer;
+}
+
+.delete_student span {
+cursor: pointer;
+display: inline-block;
+position: relative;
+transition: 0.5s;
+}
+
+.delete_student span:after {
+content: '\00bb';
+position: absolute;
+opacity: 0;
+top: 0;
+right: -20px;
+transition: 0.5s;
+}
+
+.delete_student:hover span {
+padding-right: 25px;
+}
+
+.delete_student:hover span:after {
+opacity: 1;
+right: 0;
+}

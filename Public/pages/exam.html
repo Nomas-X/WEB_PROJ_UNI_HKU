@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Project 2 - Quiz</title>
+        <link rel="stylesheet" href="../stylesheets/examstyles.css">
+    </head>
+    <body>
+        <header>
+            <div class="Star">
+                <img src="Images/Star.png" width="125" height="124">
+            </div>
+            <div class="Title">
+                <h1>War History Quiz</h1>
+            </div>
+            <div class="Star">
+                <img src="Images/Star.png" width="125" height="124">
+            </div>
+        </header>
+
+        <main>
+            <form>
+                <section class="Section_1">
+                    <div>
+                        <h3>What year did WW2 Start?</h3>
+                        <input type="text" id="Section_1_A1" placeholder="YYYY"><span class="Result"></span>
+                    </div>
+                    <div>
+                        <h3>Who was the German Führer in WW2?</h3>
+                        <input type="text" id="Section_1_A2" placeholder="Name & last name"><span class="Result"></span>
+                    </div>
+                    <div>
+                        <h3>What was the name of Germany's most feared battle ship in WW2?</h3>
+                        <input type="text" id="Section_1_A3" placeholder="KMS-Name"><span class="Result"></span>
+                    </div>
+                </section>
+                <section class="Section_2">
+                    <div>
+                        <h3>Which treaty ended the War of 1812?</h3>
+                        <form action="">
+                            <span class=""><input type="radio" name="Section_2_A1" class="Section_2_A1" value="False">Treaty of Versailles</span><span class="Section_2_False Hidden Result">X</span><br>
+                            <span class=""><input type="radio" name="Section_2_A1" class="Section_2_A1" value="True">Treat of Ghent</span><span class="Section_2_True Hidden Result">&#10003</span><br>
+                            <span class=""><input type="radio" name="Section_2_A1" class="Section_2_A1" value="False">Maastricht Treaty</span><span class="Section_2_False Hidden Result">X</span><br>
+                            <span class=""><input type="radio" name="Section_2_A1" class="Section_2_A1" value="False">Treaty of Brest-Litovsk</span><span class="Section_2_False Hidden Result">X</span>
+                        </form>
+                    </div>
+                    <div>
+                        <h3>The D-Day invasion of June 6, 1944, took place in:</h3>
+                        <form action="">
+                            <span class=""><input type="radio" name="Section_2_A2" class="Section_2_A2" value="True">France</span><span class="Section_2_True Hidden Result">&#10003</span><br>
+                            <span class=""><input type="radio" name="Section_2_A2" class="Section_2_A2" value="False">Belguim</span><span class="Section_2_False Hidden Result">X</span><br>
+                            <span class=""><input type="radio" name="Section_2_A2" class="Section_2_A2" value="False">Ireland</span><span class="Section_2_False Hidden Result">X</span><br>
+                            <span class=""><input type="radio" name="Section_2_A2" class="Section_2_A2" value="False">Canada</span><span class="Section_2_False Hidden Result">X</span>
+                        </form>
+                    </div>
+                    <div>
+                        <h3>Which of these is another name for WW1?</h3>
+                        <form action="">
+                            <span class=""><input type="radio" name="Section_2_A3" class="Section_2_A3" value="True">Great War</span><span class="Section_2_True Hidden Result">&#10003</span><br>
+                            <span class=""><input type="radio" name="Section_2_A3" class="Section_2_A3" value="False">Revolution of 1917</span><span class="Section_2_False Hidden Result">X</span><br>
+                            <span class=""><input type="radio" name="Section_2_A3" class="Section_2_A3" value="False">Yugoslav Wars</span><span class="Section_2_False Hidden Result">X</span><br>
+                            <span class=""><input type="radio" name="Section_2_A3" class="Section_2_A3" value="False">Austro-Prussian War</span><span class="Section_2_False Hidden Result">X</span>
+                        </form>
+                    </div>
+                </section>
+                <section class="Section_3">
+                    <div">
+                        <h3>Which of the following countries joined the Allies in WW2?</h3>
+                        <form action="">
+                            <span class=""><input type="checkbox" name="Section_3_A1" value="True">Great Britain</span><span class="Section_3_True Hidden Result">&#10003</span><br>
+                            <span class=""><input type="checkbox" name="Section_3_A1" value="True">The United States</span><span class="Section_3_True Hidden Result">&#10003</span><br>
+                            <span class=""><input type="checkbox" name="Section_3_A1" value="True">The Soviet Union</span><span class="Section_3_True Hidden Result">&#10003</span>
+                        </form>
+                    </div>
+                    <div>
+                        <h3>Which of the following were major players in the Cold War?</h3>
+                        <form action="">
+                            <span class=""><input type="checkbox" name="Section_3_A2" value="True">The USSR</span><span class="Section_3_True Hidden Result">&#10003</span><br>
+                            <span class=""><input type="checkbox" name="Section_3_A2" value="True">The US</span><span class="Section_3_True Hidden Result">&#10003</span><br>
+                            <span class=""><input type="checkbox" name="Section_3_A2" value="False">Turkey</span><span class="Section_3_False Hidden Result">X</span>
+                        </form>
+                    </div>
+                    <div>
+                        <h3>Also called the Typhoon of Steel, one of the bloodiest battles fought in the Pacific Theater during World War II is better known as:</h3>
+                        <form action="">
+                            <span class=""><input type="checkbox" name="Section_3_A3" value="True">Battle of Okinawa</span><span class="Section_3_True Hidden Result">&#10003</span><br>
+                            <span class=""><input type="checkbox" name="Section_3_A3" value="False">Battle of Midway</span><span class="Section_3_False Hidden Result">X</span><br>
+                            <span class=""><input type="checkbox" name="Section_3_A3" value="False">Battle of Wake Island</span><span class="Section_3_False Hidden Result">X</span>
+                        </form>
+                    </div>
+                </section>
+                <section class="Section_4">
+                    <div>
+                        <h3>Was George Marshall sworn in as the U.S. Army chief of staff on 1st of September 1939?</h3>
+                        <input type="button" value="Yes" class="button Section_4_A1 True_Answer">
+                        <input type="button" value="No" class="button Section_4_A1 False_Answer">
+                    </div>
+                    <div>
+                        <h3>Was Operation Barbarossa a success?</h3>
+                        <input type="button" value="Yes" class="button Section_4_A2 False_Answer">
+                        <input type="button" value="No" class="button Section_4_A2 True_Answer">
+                    </div>
+                    <div>
+                        <h3>Is Blitzkrieg the name of a military tactic used by Germans in WW2?</h3>
+                        <input type="button" value="Yes" class="button Section_4_A3 True_Answer">
+                        <input type="button" value="No" class="button Section_4_A3 False_Answer">
+                    </div>
+                </section>
+            </form>
+        </main>
+
+        <footer>
+            <section class="submission">
+                <h3 class="Score_Result">Your score is: </h3>
+                <button type="submit" class="submit">Submit</button>
+                <button type="reset" class="reset">Try again</button>
+            </section>
+        </footer>
+        <script src='../javascript/examlogic.js'></script>
+    </body>
+</html> 
