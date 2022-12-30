@@ -1,4 +1,3 @@
-<?php include("../config/db_connect.php"); ?>
 <?php
 	$errors = ["exam_name" => "", "exam_department" => "", "other_errors" => ""];
 
@@ -79,7 +78,15 @@
 				$exam_id = $exam_id["id"];
 
 				for ($i = 0; $i < count($questions); $i++) {
-					$sql = "INSERT INTO exam_questions(question, type, answer_1, answer_2, answer_3, answer_4, correct_answer, grade, exam_id) VALUES('$questions[$i]', '$quesions_types[$i]', '$answers_1[$i]', '$answers_2[$i]', '$answers_3[$i]', '$answers_4[$i]', '$correct_answers[$i]', '$grades[$i]', '$exam_id')";
+					$question = mysqli_real_escape_string($conn, $questions[$i]);
+					$quesion_type = mysqli_real_escape_string($conn, $quesions_types[$i]);
+					$answer_1 =  mysqli_real_escape_string($conn, $answers_1[$i]);
+					$answer_2 = mysqli_real_escape_string($conn, $answers_2[$i]);
+					$answer_3 = mysqli_real_escape_string($conn, $answers_3[$i]);
+					$answer_4 = mysqli_real_escape_string($conn, $answers_4[$i]);
+					$correct_answer = mysqli_real_escape_string($conn, $correct_answers[$i]);
+					$grade = mysqli_real_escape_string($conn, $grades[$i]);
+					$sql = "INSERT INTO exam_questions(question, type, answer_1, answer_2, answer_3, answer_4, correct_answer, grade, exam_id) VALUES('$question', '$quesion_type', '$answer_1', '$answer_2', '$answer_3', '$answer_4', '$correct_answer', '$grade', '$exam_id')";
 					if (!mysqli_query($conn, $sql)) {
 						echo "query error: " . mysqli_error($conn);
 					}

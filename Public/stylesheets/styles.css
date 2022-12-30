@@ -309,7 +309,7 @@ tr:nth-child(even) {
 	margin-right: auto;
 }
 
-.delete_student {
+.delete_student, .delete_exam {
 	display: inline-block;
 	border-radius: 4px;
 	background-color: red;
