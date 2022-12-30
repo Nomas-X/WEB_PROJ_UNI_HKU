@@ -29,6 +29,7 @@
 			if (!preg_match("/^\d+$/u", $std_number)) {
 				$errors["std_number"] = "Invalid student number!";
 			}
+			$std_number = mysqli_real_escape_string($conn, $_POST["std_number"]);
 			$sql = "SELECT student_number FROM students WHERE student_number = $std_number";
 			$result = mysqli_query($conn, $sql);
 			$std_number_check = mysqli_fetch_assoc($result);

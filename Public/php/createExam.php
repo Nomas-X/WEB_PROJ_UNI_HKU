@@ -1,3 +1,4 @@
+<?php include("../config/db_connect.php"); ?>
 <?php
 	$errors = ["exam_name" => "", "exam_department" => "", "other_errors" => ""];
 
@@ -43,28 +44,50 @@
 			} elseif ($key === "exam_name") {
 				$exam_name = $value;
 			}
-		} // Add escape real string
-		// This is for testing
-		print_r($_POST);
-		print_r("<br><br>");
-		print_r($questions);
-		print_r("<br><br>");
-		print_r($quesions_types);
-		print_r("<br><br>");
-		print_r($answers_1);
-		print_r("<br><br>");
-		print_r($answers_2);
-		print_r("<br><br>");
-		print_r($answers_3);
-		print_r("<br><br>");
-		print_r($answers_4);
-		print_r("<br><br>");
-		print_r($correct_answers);
-		print_r("<br><br>");
-		print_r($grades);
-		print_r("<br><br>");
-		print_r($exam_name);
-		print_r("<br><br>");
-		print_r($exam_department);
+		}
+
+		if ($exam_name === "") {
+			$errors["exam_name"] = "Exam name is missing!";
+		}
+		if ($exam_department === "") {
+			$errors["exam_department"] = "Exam department is missing!";
+		}
+
+		$exam_name = mysqli_real_escape_string($conn, $_POST["exam_name"]);
+		$sql = "SELECT name FROM exams WHERE name = '$exam_name'";
+		$result = mysqli_query($conn, $sql);
+		$exam_name_check = mysqli_fetch_assoc($result);
+		mysqli_free_result($result);
+		if ($exam_name_check) {
+			$errors["other_errors"] = "Exam name already in the database!";
+		}
+
+		
+		if (array_filter($errors)) {
+			echo "errors in the form!";
+		} else {
+			$exam_name = mysqli_real_escape_string($conn, $_POST["exam_name"]);
+			$exam_department = mysqli_real_escape_string($conn, $_POST["exam_department"]);	
+
+			$sql = "INSERT INTO exams(name, department) VALUES('$exam_name','$exam_department')";
+
+			if (mysqli_query($conn, $sql)) {
+				$sql = "SELECT id FROM exams WHERE name = '$exam_name'";
+				$result = mysqli_query($conn, $sql);
+				$exam_id = mysqli_fetch_assoc($result);
+				mysqli_free_result($result);
+				$exam_id = $exam_id["id"];
+
+				for ($i = 0; $i < count($questions); $i++) {
+					$sql = "INSERT INTO exam_questions(question, type, answer_1, answer_2, answer_3, answer_4, correct_answer, grade, exam_id) VALUES('$questions[$i]', '$quesions_types[$i]', '$answers_1[$i]', '$answers_2[$i]', '$answers_3[$i]', '$answers_4[$i]', '$correct_answers[$i]', '$grades[$i]', '$exam_id')";
+					if (!mysqli_query($conn, $sql)) {
+						echo "query error: " . mysqli_error($conn);
+					}
+				}
+				header("location: createExams.php");
+			} else {
+				echo "query error: " . mysqli_error($conn);
+			}
+		}
 	}
 ?>

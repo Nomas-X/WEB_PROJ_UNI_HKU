@@ -293,7 +293,7 @@ tr:nth-child(even) {
 	text-align: center;
 }
 
-.std_add_error {
+.std_add_error, .exam_create_error {
 	color: black;
 	background-color: #df9393;
 	width: 50%;

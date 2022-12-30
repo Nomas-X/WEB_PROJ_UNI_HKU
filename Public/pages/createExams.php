@@ -20,10 +20,15 @@
 			<div class="header">Welcome!! [Insert Name]!</div>  
 			<div class="info">
 				<form>
+					<div class="errors_container">
+						<div class="exam_create_error"><?php echo $errors["exam_name"]; ?></div>
+						<div class="exam_create_error"><?php echo $errors["exam_department"]; ?></div>
+						<div class="exam_create_error"><?php echo $errors["other_errors"]; ?></div>
+					</div>
 					<div>
 						<input type="text" class="create_inputs" id="name_selector" placeholder="Exam Name">
 						<select name="" class="create_inputs" id="department_selector">
-							<option value="0">Department</option>
+							<option value="">Department</option>
 							<option value="EEE">EEE | Eletrical and Electrons Engineering</option>
 							<option value="COME">COME | Computer Engineering</option>
 							<option value="CENG">CENG | Civil Engineering</option>
