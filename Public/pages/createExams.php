@@ -21,8 +21,8 @@
 			<div class="info">
 				<form>
 					<div>
-						<input type="text" class="create_inputs" placeholder="Exam Name">
-						<select name="" id="" class="create_inputs">
+						<input type="text" class="create_inputs" id="name_selector" placeholder="Exam Name">
+						<select name="" class="create_inputs" id="department_selector">
 							<option value="0">Department</option>
 							<option value="EEE">EEE | Eletrical and Electrons Engineering</option>
 							<option value="COME">COME | Computer Engineering</option>
@@ -47,8 +47,8 @@
 				<hr>
 				<form action="createExams.php" method="POST" class="questions_container" id="questions_container">
 					<div id="create_exam_submit">
-						<input type="hidden" name="exam_department" value="">
-						<input type="hidden" name="exam_name" value="">
+						<input type="hidden" name="exam_department" id="exam_department" value="">
+						<input type="hidden" name="exam_name" id="exam_name" value="">
 						<button type="submit" class="create_exam" id="create_exam" name="create_exam">Create Exam</button>
 					</div>
 				</form>

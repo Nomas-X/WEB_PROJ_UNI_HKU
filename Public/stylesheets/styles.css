@@ -140,7 +140,7 @@ body{
 	padding-left: 0.5em;
 }
 
-.new_question_answers_inputs {
+.new_question_answers_inputs, .correct_order_input {
 	display: block;
 	width: 20%;
 	height: 2em;
@@ -149,10 +149,14 @@ body{
 	padding-left: 0.5em;
 }
 
+.correct_order_input {
+	width: 30%;
+}
+
 .correct_answer_radio, .correct_answer_checkbox, .correct_answer_order, .question_grade {
 	margin-right: 0.5em;
 	margin-left: 0.5em;
-	width: 1.5em;
+	width: 2em;
 	font-size: medium;
 }
 
