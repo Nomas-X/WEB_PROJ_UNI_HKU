@@ -233,6 +233,7 @@ body{
 
 .question_delete_icon {
 	color: #d40000;
+	margin-right: 0.3em;
 }
 
 .delete_icon:hover, .question_delete_icon:hover {
@@ -274,6 +275,13 @@ tr:nth-child(even) {
 
 .delete_question_button {
 	display: block;
+	width: 20%;
+}
+
+.delete_question_button:hover {
+	display: block;
+	width: 20%;
+	cursor: pointer;
 }
 
 .center {

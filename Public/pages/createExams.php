@@ -1,3 +1,6 @@
+<?php include("../config/db_connect.php"); ?>
+<?php include("../php/createExam.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,15 +19,15 @@
 		<div class="main_content">
 			<div class="header">Welcome!! [Insert Name]!</div>  
 			<div class="info">
-				<form action="#">
+				<form>
 					<div>
 						<input type="text" class="create_inputs" placeholder="Exam Name">
 						<select name="" id="" class="create_inputs">
-							<option value="0">Course</option>
-							<option value="EE331">EE331 | Signals and Systems</option>
-							<option value="EE205">EE205 | Circuit Analysis</option>
-							<option value="CENG313">CENG313 | Web Programming</option>
-							<option value="CENG311">CENG311 | Data Communications and Computer Networks</option>
+							<option value="0">Department</option>
+							<option value="EEE">EEE | Eletrical and Electrons Engineering</option>
+							<option value="COME">COME | Computer Engineering</option>
+							<option value="CENG">CENG | Civil Engineering</option>
+							<option value="LAW">LAW | Laws and Rights</option>
 						</select>
 					</div>
 					<hr>
@@ -42,12 +45,13 @@
 					</div>
 				</form>
 				<hr>
-				<div class="questions_container" id="questions_container">
-
+				<form action="createExams.php" method="POST" class="questions_container" id="questions_container">
 					<div id="create_exam_submit">
-						<button type="submit" class="create_exam" id="create_exam">Create Exam</button>
+						<input type="hidden" name="exam_department" value="">
+						<input type="hidden" name="exam_name" value="">
+						<button type="submit" class="create_exam" id="create_exam" name="create_exam">Create Exam</button>
 					</div>
-				</div>
+				</form>
 		  </div>
 		</div>
 	</div>

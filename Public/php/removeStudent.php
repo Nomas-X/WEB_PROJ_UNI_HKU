@@ -1,4 +1,3 @@
-<?php include("../config/db_connect.php"); ?>
 <?php 
 	if (isset($_POST["std_delete"])) {
 		$std_to_delete = mysqli_real_escape_string($conn, $_POST["std_to_delete"]);

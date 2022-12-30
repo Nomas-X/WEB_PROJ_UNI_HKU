@@ -31,7 +31,7 @@ const removeQuestion = (question) => {
 const addRemoveButton =  (question) => {
 	let remove_question_button = document.createElement("a");
 	remove_question_button.classList.add("delete_question_button");
-	remove_question_button.innerHTML = "<i class=\"fas fa-solid fa-trash question_delete_icon\"></i> Delete Question";
+	remove_question_button.innerHTML = "<i class=\"fas fa-solid fa-trash question_delete_icon\"></i>Delete Question";
 	question.appendChild(remove_question_button);
 	remove_question_button.addEventListener("click", () => {
 		removeQuestion(remove_question_button);
@@ -52,7 +52,8 @@ const createQuestionFields = (question, type) => {
 			let answer_field = document.createElement("input");
 			
 			answer_field.classList.add("new_question_answers_inputs");
-			answer_field.placeholder = `Option ${i + 1}`
+			answer_field.placeholder = `Option ${i + 1}`;
+			answer_field.name = `question_${question_counter}_option_${i + 1}`;
 			question.appendChild(answer_field);
 
 		}
@@ -67,7 +68,7 @@ const createQuestionFields = (question, type) => {
 		
 			if (type === "single_choice") {
 				correct_option_selector.type = "radio";
-				correct_option_selector.name = `Question_id_${question_counter + 1}`;
+				correct_option_selector.name = `question_${question_counter}_answer_selector`;
 				correct_option_selector.classList.add("correct_answer_radio");
 			} else if (type === "multiple_choices") {
 				correct_option_selector.type = "checkbox";
@@ -94,6 +95,7 @@ const createQuestionFields = (question, type) => {
 	grade_field_label.classList.add("grade_p");
 	question.appendChild(grade_field_label);
 	grade_field.classList.add("question_grade");
+	grade_field.name=`question_${question_counter}_grade`;
 	grade_field.type = "number";
 	grade_field.min = "1";
 	grade_field.max = "100";
@@ -104,11 +106,15 @@ const createQuestionFields = (question, type) => {
 const createNewQuestion = (type) => {
 	if (type !== "0") {
 		let new_question = document.createElement("div");
-	
-		new_question.innerHTML = "<input type=\"text\" class=\"new_question_inputs\" placeholder=\"Enter the question\"></input>";
+		let question_type_input = document.createElement("input");
+		new_question.innerHTML = `<input type="text" class="new_question_inputs" name="question_${question_counter + 1}" placeholder="Enter the question"></input>`;
 		questions_container.appendChild(new_question);
 		questions_container.insertBefore(new_question, submit_button.parentElement);
-	
+		question_type_input.name = `question_${question_counter + 1}_type`;
+		question_type_input.type = "hidden";
+		question_type_input.value = `${type}`;
+		new_question.appendChild(question_type_input);
+
 		if (type === "single_choice") {
 			createQuestionFields(new_question, type);
 			addRemoveButton(new_question);
@@ -118,7 +124,7 @@ const createNewQuestion = (type) => {
 			correct_answer.innerHTML = "Select the correct answer:";
 			correct_answer.classList = "correct_option_p";
 			new_question.appendChild(correct_answer);
-			new_question.insertBefore(correct_answer, new_question.children[number_of_answers + 2]);
+			new_question.insertBefore(correct_answer, new_question.children[number_of_answers + 3]);
 
 
 		} else if (type === "multiple_choices") {
@@ -130,7 +136,7 @@ const createNewQuestion = (type) => {
 			correct_answer.innerHTML = "Select the correct answers:";
 			correct_answer.classList = "correct_option_p";
 			new_question.appendChild(correct_answer);
-			new_question.insertBefore(correct_answer, new_question.children[number_of_answers + 2]);
+			new_question.insertBefore(correct_answer, new_question.children[number_of_answers + 3]);
 
 		} else if (type === "order_answers") {
 			createQuestionFields(new_question, type);
@@ -141,7 +147,7 @@ const createNewQuestion = (type) => {
 			correct_answer.innerHTML = "Enter the correct order:";
 			correct_answer.classList = "correct_option_p";
 			new_question.appendChild(correct_answer);
-			new_question.insertBefore(correct_answer, new_question.children[number_of_answers + 2]);
+			new_question.insertBefore(correct_answer, new_question.children[number_of_answers + 3]);
 
 		} else if (type === "fill_blank") {
 			createQuestionFields(new_question, type);

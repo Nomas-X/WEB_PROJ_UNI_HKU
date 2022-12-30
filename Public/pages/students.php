@@ -1,10 +1,9 @@
+<?php include("../config/db_connect.php"); ?>
 <?php include("../php/addStudent.php"); ?>
 <?php include("../php/removeStudent.php"); ?>
 <?php 
 	// Define counter
 	$counter = 1;
-
-	include("../config/db_connect.php");
 
 	// Write query for all students
 	$sql = "SELECT first_name, last_name, student_number, department FROM students ORDER BY first_name";

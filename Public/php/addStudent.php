@@ -1,4 +1,3 @@
-<?php include("../config/db_connect.php"); ?>
 <?php 
 	$std_f_name = $std_l_name = $std_number = $std_password = $std_department = "";
 	$errors = ["std_f_name" => "", "std_l_name" => "", "std_number" => "", "std_password" => "", "std_department" => ""];
@@ -58,7 +57,7 @@
 		}
 
 		if (array_filter($errors)) {
-			echo "errors i	n the form!";
+			echo "errors in the form!";
 		} else {
 			$std_f_name = mysqli_real_escape_string($conn, $_POST["std_f_name"]);	
 			$std_l_name = mysqli_real_escape_string($conn, $_POST["std_l_name"]);	
