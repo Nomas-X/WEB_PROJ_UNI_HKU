@@ -1,7 +1,7 @@
-<?php include("../config/db_connect.php"); ?>
 <?php 
 	$login_type = $login_id = $login_password = "";
 	$errors = ["login_type" => "", "login_id" => "", "login_password" => "", "login_wrong" => ""];
+	$cookieExpireTime = 14400;
 
 	if (isset($_POST["login_submit"])) {
 
@@ -26,8 +26,7 @@
 				if (!filter_var($login_id, FILTER_VALIDATE_EMAIL)) {
 					$errors["login_id"] = "Invalid email!";
 				}
-			}		
-			
+			}
 		}
 
 		if (empty($_POST["login_password"])) {
@@ -45,9 +44,9 @@
 
 			// Create sql
 			if ($login_type === "Student") {
-				$sql = "SELECT student_number, password FROM students WHERE student_number = $login_id";
+				$sql = "SELECT * FROM students WHERE student_number = $login_id";
 			} elseif ($login_type === "Instructor") {
-				$sql = "SELECT email, password FROM instructors WHERE email = $login_id";
+				$sql = "SELECT * FROM instructors WHERE email = '$login_id'";
 			}
 
 			// Make query and get result
@@ -64,9 +63,21 @@
 
 			if ($user) {
 				if ($login_password === $user["password"]) {
-					header("location: students.php");
+					setcookie("user_type", $login_type, time() + $cookieExpireTime);
+					setcookie("first_name", $user["first_name"], time() + $cookieExpireTime);
+					setcookie("last_name", $user["last_name"], time() + $cookieExpireTime);
+					
+					if ($login_type === "Student") {
+						setcookie("student_number", $user["student_number"], time() + $cookieExpireTime);
+						setcookie("department", $user["department"], time() + $cookieExpireTime);
+						header("location: students.php");
+					} elseif ($login_type === "Instructor") {
+						setcookie("email", $user["email"], time() + $cookieExpireTime);
+						header("location: examList.php");
+					}
+				} else {
+					$errors["login_wrong"] = "Wrong password or email/student ID!";
 				}
-				$errors["login_wrong"] = "Wrong password or email/student ID!";
 			} else {
 				$errors["login_wrong"] = "Wrong password or email/student ID!";
 			}

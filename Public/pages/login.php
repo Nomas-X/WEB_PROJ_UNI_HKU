@@ -1,5 +1,5 @@
 <?php include("../config/db_connect.php"); ?>
-<?php include("../php/loginCheck.php"); ?>
+<?php include("../php/loginHandler.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
