@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,16 +9,16 @@
   font-family: 'Josefin Sans', sans-serif;
 }
 
-body{
+body {
    background-color: #f3f5f9;
 }
 
-.wrapper{
+.wrapper {
   display: flex;
   position: relative;
 }
 
-.wrapper .sidebar{
+.wrapper .sidebar {
   width: 200px;
   height: 100%;
   background: #4189e6;
@@ -26,39 +26,39 @@ body{
   position: fixed;
 }
 
-.wrapper .sidebar h2{
+.wrapper .sidebar h2 {
   color: #fff;
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 30px;
 }
 
-.wrapper .sidebar ul li{
+.wrapper .sidebar ul li {
   padding: 15px;
   border-bottom: 1px solid #bdb8d7;
   border-bottom: 1px solid rgba(0,0,0,0.05);
   border-top: 1px solid rgba(255,255,255,0.05);
 }    
 
-.wrapper .sidebar ul li a{
+.wrapper .sidebar ul li a {
   color: #bdb8d7;
   display: block;
 }
 
-.wrapper .sidebar ul li a .fas{
+.wrapper .sidebar ul li a .fas {
   width: 25px;
   color: white;
 }
 
-.wrapper .sidebar ul li:hover{
+.wrapper .sidebar ul li:hover {
   background-color: #2b69bb;
 }
     
-.wrapper .sidebar ul li:hover a{
+.wrapper .sidebar ul li:hover a {
   color: #fff;
 }
  
-.wrapper .sidebar .social_media{
+.wrapper .sidebar .social_media {
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -66,7 +66,7 @@ body{
   display: flex;
 }
 
-.wrapper .sidebar .social_media a{
+.wrapper .sidebar .social_media a {
   display: block;
   width: 40px;
   background: #2b69bb;
@@ -79,31 +79,33 @@ body{
   border-top-right-radius: 5px;
 }
 
-.wrapper .main_content{
+.wrapper .main_content {
   width: 100%;
   margin-left: 200px;
 }
 
-.wrapper .main_content .header{
+.wrapper .main_content .header {
   padding: 20px;
   background: #fff;
   color: #717171;
   border-bottom: 1px solid #e0e4e8;
 }
 
-.wrapper .main_content .info{
+.wrapper .main_content .info {
   margin: 20px;
   color: #717171;
   line-height: 25px;
 }
 
-.wrapper .main_content .info div{
+.wrapper .main_content .info div {
   margin-bottom: 20px;
 }
 
 .prof_inputs {
 	width: 20%;
-	font-size: x-large;
+	font-size: large;
+	display: block;
+	margin-bottom: 0.6em;
 }
 
 .add_student_inputs {
@@ -166,7 +168,7 @@ body{
 	margin-right: 0;
 }
 
-.change_button, .login_button, .add_question_active, .create_exam {
+.change_password_button, .login_button, .add_question_active, .create_exam {
 	margin-left: 1em;
 	font-size: 1em;
 	background-color: #4189e6;
@@ -181,6 +183,12 @@ body{
 	background-color: #4189e6;
 	border: none;
 }
+
+.change_password_button {
+	margin-left: 0;
+	border-radius: 15px;
+}
+
 .login_button {
 	margin: 0;
 	font-size: 1.5em;
@@ -226,11 +234,11 @@ body{
 	border: none;
 }
 
-.change_button:hover, .add_student_button:hover, .login_button:hover, .add_question_active:hover, .create_exam:hover {
+.change_password_button:hover, .add_student_button:hover, .login_button:hover, .add_question_active:hover, .create_exam:hover {
 	background-color: #2b69bb
 }
 
-.change_button:active, .add_student_button:active, .login_button:active, .add_question_active:active, .create_exam:active {
+.change_password_button:active, .add_student_button:active, .login_button:active, .add_question_active:active, .create_exam:active {
 	background-color: #2b69bb;
 	transform: translateY(2px);
 }
@@ -258,6 +266,14 @@ td, th {
   
 tr:nth-child(even) {
 	background-color: #dddddd;
+}
+
+.delete_std_td {
+	width: 1em;	
+}
+
+.exam_list_td {
+	width: 13.4em;
 }
 
 .tableCaption {
@@ -293,13 +309,17 @@ tr:nth-child(even) {
 	text-align: center;
 }
 
-.std_add_error, .exam_create_error {
+.std_add_error, .exam_create_error, .password_change_error, .password_update {
 	color: black;
 	background-color: #df9393;
 	width: 50%;
 	margin-bottom: 0px !important;
 	margin-top: 0px !important;
 	font-size: small;
+}
+
+.password_update {
+	background-color: #70c770;
 }
 
 .login_error {
@@ -309,7 +329,7 @@ tr:nth-child(even) {
 	margin-right: auto;
 }
 
-.delete_student, .delete_exam {
+.delete_student, .delete_exam, .preview_exam {
 	display: inline-block;
 	border-radius: 4px;
 	background-color: red;
@@ -320,32 +340,41 @@ tr:nth-child(even) {
 	padding: 1em;
 	padding-top: 0.2em;
 	padding-bottom: 0.2em;
-	width: 5em;
+	width: 6em;
 	transition: all 0.5s;
 	cursor: pointer;
 }
 
-.delete_student span {
-cursor: pointer;
-display: inline-block;
-position: relative;
-transition: 0.5s;
+.preview_exam {
+	background-color: #4189e6;
+	width: 6em;
 }
 
-.delete_student span:after {
-content: '\00bb';
-position: absolute;
-opacity: 0;
-top: 0;
-right: -20px;
-transition: 0.5s;
+.delete_student span, .delete_exam span, .preview_exam span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
 }
 
-.delete_student:hover span {
-padding-right: 25px;
+.delete_student span:after, .delete_exam span:after, .preview_exam span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
 }
 
-.delete_student:hover span:after {
-opacity: 1;
-right: 0;
+.delete_student:hover span, .delete_exam:hover span, .preview_exam:hover span {
+	padding-right: 25px;
+}
+
+.delete_student:hover span:after, .delete_exam:hover span:after, .preview_exam:hover span:after {
+	opacity: 1;
+	right: 0.7em;
+}
+
+.exam_list_form {
+	display: inline-block;
 }

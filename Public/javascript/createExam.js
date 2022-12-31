@@ -15,6 +15,18 @@ let question_counter = 0;
 
 /* Defining Functions */
 
+//
+const checkGrades = (input_field) => {
+	if (input_field.value > 100 || input_field.value <= 0) {
+		input_field.classList.add("question_grade_error");
+		if (input_field.value > 100) {
+			input_field.value = 100;
+		} else {
+			input_field.value = 1;
+		}
+	}
+}
+
 // Function called on change of exam name or departemnt to update hidden fields so PHP can access the information
 const updateExamInfo = () => {
 	exam_name.value = exam_name_selector.value;
@@ -131,10 +143,12 @@ const createQuestionFields = (question, type) => {
 	grade_field_label.classList.add("grade_p");
 	question.appendChild(grade_field_label);
 	grade_field.classList.add("question_grade");
+	grade_field.onchange = () => {checkGrades(grade_field)};
 	grade_field.name=`question_${question_counter}_grade`;
 	grade_field.type = "number";
 	grade_field.min = "1";
 	grade_field.max = "100";
+	grade_field.value = 1;
 	question.appendChild(grade_field);
 }
 
@@ -198,6 +212,19 @@ const createNewQuestion = (type) => {
 		let question_seperator = document.createElement("hr");
 		question_seperator.classList.add("questions_seperator");
 		new_question.appendChild(question_seperator);
+	}
+	let question_inputs = document.getElementsByClassName("new_question_inputs");
+	let question_answers_inputs = document.getElementsByClassName("new_question_answers_inputs");
+	let answer_radios = document.getElementsByClassName("correct_answer_radio");
+	let order_inputs = document.getElementsByClassName("correct_order_input");
+	let grade_inputs = document.getElementsByClassName("question_grade");
+
+	let required_inputs = [question_inputs, question_answers_inputs, answer_radios, order_inputs, grade_inputs];
+
+	for (let item of required_inputs) {
+		for (let input of item) {
+			input.required = true;
+		}
 	}
 }
 

@@ -2,9 +2,18 @@
 	$login_type = $login_id = $login_password = "";
 	$errors = ["login_type" => "", "login_id" => "", "login_password" => "", "login_wrong" => ""];
 	$cookieExpireTime = 14400;
+	$logged_in = $_COOKIE["logged_in"] ?? false;
+	$user_type = $_COOKIE["user_type"] ?? NULL;
+
+	if ($logged_in) {
+		if ($user_type === "Student") {
+			header("location: activeExams.php");
+		} elseif ($user_type === "Instructor") {
+			header("location: examList.php");
+		}
+	}
 
 	if (isset($_POST["login_submit"])) {
-
 		if (empty($_POST["login_type"])) {
 			$errors["login_type"] = "You must select login type!";
 		} else {
@@ -66,6 +75,7 @@
 					setcookie("user_type", $login_type, time() + $cookieExpireTime);
 					setcookie("first_name", $user["first_name"], time() + $cookieExpireTime);
 					setcookie("last_name", $user["last_name"], time() + $cookieExpireTime);
+					setcookie("logged_in", true, time() + $cookieExpireTime);
 					
 					if ($login_type === "Student") {
 						setcookie("student_number", $user["student_number"], time() + $cookieExpireTime);

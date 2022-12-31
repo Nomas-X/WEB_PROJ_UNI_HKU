@@ -3,7 +3,6 @@
 	$errors = ["std_f_name" => "", "std_l_name" => "", "std_number" => "", "std_password" => "", "std_department" => ""];
 
 	if (isset($_POST["add_std_submit"])) {
-
 		if (empty($_POST["std_f_name"])) {
 			$errors["std_f_name"] = "A first name is required!";
 		} else {
@@ -43,7 +42,7 @@
 			$errors["std_f_name"] = "A password is required!";
 		} else {
 			$std_password = $_POST["std_password"];
-			if (!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/m", $std_password)) {
+			if (!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/", $std_password)) {
 				$errors["std_password"] = "Invalid password, you need a minimum of 8 character which include 1 upper Case, 1 special character, and 1 number!";
 			}
 		}
@@ -53,7 +52,7 @@
 		} else {
 			$std_department = $_POST["std_department"];
 			if (!preg_match("/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u", $std_department)) {
-				$errors["std_department"] = "Invalude department!";
+				$errors["std_department"] = "Invalid department!";
 			}
 		}
 

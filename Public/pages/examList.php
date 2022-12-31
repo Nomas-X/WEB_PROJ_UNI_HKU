@@ -1,3 +1,4 @@
+<?php include("../php/cookieChecker.php"); ?>
 <?php include("../config/db_connect.php"); ?>
 <?php include("../php/deleteExam.php"); ?>
 <?php 
@@ -37,7 +38,7 @@
 			<?php include("../templates/sideBarInstructor.php") ?>
 		</div>
 		<div class="main_content">
-			<div class="header">Welcome!! Have a nice day.</div>  
+			<div class="header">Welcome <?php print_r($first_name . " " . $last_name); ?>!</div>
 			<div class="info">
 				<table>
 					<caption class="tableCaption">Exams List</caption>
@@ -59,10 +60,14 @@
 									<td><?php echo htmlspecialchars($exam["department"]); ?></td>
 									<td><?php echo htmlspecialchars($exam["id"]); ?></td>
 									<td><?php echo htmlspecialchars($exam["created_at"]); ?></td>
-									<td>
-										<form action="examList.php" method="POST">
+									<td class="exam_list_td">
+										<form action="examList.php" method="POST" class="exam_list_form">
 											<input type="hidden" name="exam_to_delete" value="<?php echo $exam["id"]; ?>">
 											<button type="submit" name="exam_delete" value="Delete" class="delete_exam"><span>Delete</span></button>
+										</form>
+										<form action="examList.php" method="GET" class="exam_list_form">
+											<input type="hidden" name="exam_to_preview" value="<?php echo $exam["id"]; ?>">
+											<button type="submit" name="exam_preview" value="preview" class="preview_exam"><span>Preview</span></button>
 										</form>
 									</td>
 								</tr>

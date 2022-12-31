@@ -1,10 +1,11 @@
+<?php include("../php/cookieChecker.php"); ?>
+<?php include("../php/instructorsOnly.php"); ?>
 <?php include("../config/db_connect.php"); ?>
 <?php include("../php/addStudent.php"); ?>
 <?php include("../php/removeStudent.php"); ?>
 <?php 
 	// Define counter
 	$counter = 1;
-
 	// Write query for all students
 	$sql = "SELECT first_name, last_name, student_number, department FROM students ORDER BY first_name";
 
@@ -38,7 +39,7 @@
 			<?php include("../templates/sideBarInstructor.php") ?>
 		</div>
 		<div class="main_content">
-			<div class="header">Welcome!! Have a nice day.</div>  
+			<div class="header">Welcome <?php print_r($first_name . " " . $last_name); ?>!</div>  
 			<div class="info">
 				<table>
 					<caption class="tableCaption">Students List</caption>
@@ -60,7 +61,7 @@
 									<td><?php echo htmlspecialchars($student["last_name"]); ?></td>
 									<td><?php echo htmlspecialchars($student["student_number"]); ?></td>
 									<td><?php echo htmlspecialchars($student["department"]); ?></td>
-									<td>
+									<td class="delete_std_td">
 										<form action="students.php" method="POST">
 											<input type="hidden" name="std_to_delete" value="<?php echo $student["student_number"]; ?>">
 											<button type="submit" name="std_delete" value="Delete" class="delete_student"><span>Delete</span></button>

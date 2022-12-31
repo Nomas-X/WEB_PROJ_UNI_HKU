@@ -1,10 +1,11 @@
 <?php
-	$errors = ["exam_name" => "", "exam_department" => "", "other_errors" => ""];
+	$errors = ["exam_name" => "", "exam_department" => "", "grades" => "", "missing_grade" => "", "other_errors" => ""];
 
 	if (isset($_POST["create_exam"])) {
 		$array_keys = array_keys($_POST);
 		$questions = $quesions_types = $answers_1 = $answers_2 = $answers_3 = $answers_4 = $correct_answers = $grades = [];
 		$exam_name = $exam_department = "";
+		$grade_total = 0;
 
 		foreach($_POST as $key => $value) {
 			if(preg_match("/^question_[0-9]+$/", $key)) {
@@ -57,8 +58,22 @@
 		$result = mysqli_query($conn, $sql);
 		$exam_name_check = mysqli_fetch_assoc($result);
 		mysqli_free_result($result);
+
 		if ($exam_name_check) {
 			$errors["other_errors"] = "Exam name already in the database!";
+		}
+
+		foreach ($grades as $grade) {
+			$grade = (int)$grade;
+			if (gettype($grade) === "string") {
+				$errors["missing_grade"] = "A question is missing it's grade!";
+				break;
+			}
+			$grade_total += $grade;
+		}
+
+		if ($grade_total > 100 || $grade_total < 100) {
+			$errors["grades"] = "Grade total must equal 100, current grade total is $grade_total!";
 		}
 
 		
@@ -91,7 +106,7 @@
 						echo "query error: " . mysqli_error($conn);
 					}
 				}
-				header("location: createExams.php");
+				header("location: examList.php");
 			} else {
 				echo "query error: " . mysqli_error($conn);
 			}

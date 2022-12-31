@@ -1,3 +1,4 @@
+<?php include("../php/cookieChecker.php"); ?>
 <?php include("../config/db_connect.php"); ?>
 <?php include("../php/createExam.php"); ?>
 
@@ -17,12 +18,14 @@
 			<?php include("../templates/sideBarInstructor.php") ?>
 		</div>
 		<div class="main_content">
-			<div class="header">Welcome!! [Insert Name]!</div>  
+			<div class="header">Welcome <?php print_r($first_name . " " . $last_name); ?>!</div>
 			<div class="info">
 				<form>
 					<div class="errors_container">
 						<div class="exam_create_error"><?php echo $errors["exam_name"]; ?></div>
 						<div class="exam_create_error"><?php echo $errors["exam_department"]; ?></div>
+						<div class="exam_create_error"><?php echo $errors["missing_grade"]; ?></div>
+						<div class="exam_create_error"><?php echo $errors["grades"]; ?></div>
 						<div class="exam_create_error"><?php echo $errors["other_errors"]; ?></div>
 					</div>
 					<div>
@@ -40,7 +43,6 @@
 						<select id="question_type" class="create_inputs" onchange="validateQuestionType()">
 							<option value="0">Question Type</option>
 							<option value="single_choice">Single Choice</option>
-							<!-- Multiple choices grading will be done based on how many answers the student has got right -->
 							<option value="multiple_choices">Multiple Choices</option> 
 							<option value="order_answers">Order The Answers</option>
 							<option value="fill_blank">Fill the Blank</option>
