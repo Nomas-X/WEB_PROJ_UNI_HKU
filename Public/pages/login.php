@@ -22,19 +22,20 @@
 				<form action="login.php" method="POST">
 					<div class="login_error"><?php echo $errors["login_wrong"]; ?></div>
 					<div>
-						<label class="login_labels">Student or Instructor:&#160;</label><select name="login_type" id="login_type" class="login_inputs" onchange="loginTypeValidate()">
-							<option value="SELECT"></option>
+						<label class="login_labels">Student or Instructor:</label>
+						<select name="login_type" id="login_type" class="login_inputs" onchange="loginTypeValidate()" required>
+							<option disabled disabled selected></option>
 							<option value="Student">Student</option>
 							<option value="Instructor">Instructor</option>
 						</select>
 						<div class="login_error"><?php echo $errors["login_type"]; ?></div>
 					</div>
 					<div>
-						<label class="login_labels" id="login_id_label">Student Number:&#160;</label><input type="text" class="login_inputs" id="login_id" name="login_id" value="<?php echo htmlspecialchars($login_id); ?>" required>
+						<label class="login_labels" id="login_id_label">Student Number:</label><input type="text" class="login_inputs" id="login_id" name="login_id" value="<?php echo htmlspecialchars($login_id); ?>" required>
 						<div class="login_error"><?php echo $errors["login_id"]; ?></div>
 					</div>
 					<div>
-						<label class="login_labels">Password:&#160;</label><input type="password" class="login_inputs" name="login_password" value="<?php echo htmlspecialchars($login_password); ?>" required>
+						<label class="login_labels">Password:</label><input type="password" class="login_inputs" name="login_password" value="<?php echo htmlspecialchars($login_password); ?>" required>
 						<div class="login_error"><?php echo $errors["login_password"]; ?></div>
 					</div>
 					<button class="login_button" id="login_button" name="login_submit" type="submit">Login</button>

@@ -5,5 +5,6 @@
 	<li><a href="examList.php"><i class="fas fa-solid fa-rectangle-list"></i>Exam List</a></li>
 	<li><a href="createExams.php"><i class="fas fa-solid fa-pen-nib"></i>Essays</a></li>
 	<li><a href="students.php"><i class="fas fa-address-book"></i>Students</a></li>
-	<li><a href="login.php"><i class="fas fa-solid fa-right-from-bracket"></i>Logout</a></li>
+	<li><a href="login.php" id="logout"><i class="fas fa-solid fa-right-from-bracket"></i>Logout</a></li>
 </ul>
+<script src="../javascript/logout.js"></script>

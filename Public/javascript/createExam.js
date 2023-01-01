@@ -15,7 +15,7 @@ let question_counter = 0;
 
 /* Defining Functions */
 
-//
+// Function called on change of grade input field to ensure that the user can not enter a value below 1 or above 100.
 const checkGrades = (input_field) => {
 	if (input_field.value > 100 || input_field.value <= 0) {
 		input_field.classList.add("question_grade_error");
@@ -27,13 +27,13 @@ const checkGrades = (input_field) => {
 	}
 }
 
-// Function called on change of exam name or departemnt to update hidden fields so PHP can access the information
+// Function called on change of exam name or departemnt to update hidden fields so PHP can access the information.
 const updateExamInfo = () => {
 	exam_name.value = exam_name_selector.value;
 	exam_department.value = exam_department_selector.value;
 }
 
-// Function called on change of multiple choice correct answer selection to set the value to be accessable by PHP
+// Function called on change of multiple choice correct answer selection to set the value to be accessable by PHP.
 const setCheckboxCorrectAnswer = (checkbox_name) => {
 	let answer = "";
 	let checkboxes = document.getElementsByName(checkbox_name);
@@ -68,6 +68,7 @@ const removeQuestion = (question) => {
 // Function called on question creation to add the delete button
 const addRemoveButton =  (question) => {
 	let remove_question_button = document.createElement("a");
+
 	remove_question_button.classList.add("delete_question_button");
 	remove_question_button.innerHTML = "<i class=\"fas fa-solid fa-trash question_delete_icon\"></i>Delete Question";
 	question.appendChild(remove_question_button);
