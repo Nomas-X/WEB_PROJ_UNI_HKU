@@ -12,7 +12,7 @@ const logout = () => {
 	document.cookie = "user_type = ; expires = Thu, 01 Jan 1970 00:00:00 GMT;"
 	document.cookie = "student_number = ; expires = Thu, 01 Jan 1970 00:00:00 GMT;"
 	document.cookie = "email = ; expires = Thu, 01 Jan 1970 00:00:00 GMT;"
-	document.cookie = "department = ; expires = Thu, 01 Jan 1970 00:00:00 GMT;"
+	document.cookie = "courses = ; expires = Thu, 01 Jan 1970 00:00:00 GMT;"
 }
 
 /* Other */

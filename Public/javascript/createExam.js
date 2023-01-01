@@ -4,9 +4,11 @@ let questions_container = document.getElementById("questions_container");
 let submit_button = document.getElementById("create_exam");
 let question_type = document.getElementById("question_type");
 let exam_name_selector = document.getElementById("name_selector");
-let exam_department_selector = document.getElementById("department_selector");
+let exam_course_selector = document.getElementById("course_selector");
+let exam_deadline_selector = document.getElementById("deadline_selector");
 let exam_name = document.getElementById("exam_name");
-let exam_department = document.getElementById("exam_department");
+let exam_course = document.getElementById("exam_course");
+let exam_deadline = document.getElementById("exam_deadline");
 
 /* Defining variables */
 
@@ -30,7 +32,8 @@ const checkGrades = (input_field) => {
 // Function called on change of exam name or departemnt to update hidden fields so PHP can access the information.
 const updateExamInfo = () => {
 	exam_name.value = exam_name_selector.value;
-	exam_department.value = exam_department_selector.value;
+	exam_course.value = exam_course_selector.value;
+	exam_deadline.value = exam_deadline_selector.value;
 }
 
 // Function called on change of multiple choice correct answer selection to set the value to be accessable by PHP.
@@ -232,7 +235,8 @@ const createNewQuestion = (type) => {
 /* Other */
 
 exam_name_selector.onchange = () => {updateExamInfo()};
-exam_department_selector.onchange = () => {updateExamInfo()};
+exam_course_selector.onchange = () => {updateExamInfo()};
+exam_deadline_selector.onchange = () => {updateExamInfo()};
 
 add_question_button.addEventListener("click", () => {
 	createNewQuestion(question_type.value);

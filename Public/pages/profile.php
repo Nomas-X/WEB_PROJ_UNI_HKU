@@ -1,6 +1,24 @@
 <?php include("../php/cookieChecker.php"); ?>
 <?php include("../config/db_connect.php"); ?>
 <?php include("../php/changePassword.php"); ?>
+<?php 
+	// Write query for all students
+	$sql = "SELECT * FROM courses";
+
+	// Make query and get result
+	$result = mysqli_query($conn, $sql);
+	
+	// Fetch the resulting rows as an array
+	$courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+	// Free result from memory
+	mysqli_free_result($result);
+
+	// Close the connection
+	mysqli_close($conn);
+
+	$student_courses_array = explode(",", $student_courses);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,8 +58,14 @@
 						<p><?php print_r($student_number); ?></p>
 						</div>
 						<div>
-						<p>Department:</p>
-						<p><?php print_r($department); ?></p>
+						<p>Your Courses:</p>
+						<?php foreach ($student_courses_array as $student_course) { ?>
+							<?php foreach ($courses as $course) { ?>
+								<?php if ($student_course === $course["code"]) { ?>
+									<p><?php print_r(htmlspecialchars($course["code"] . " | " . $course["name"])); ?></p>
+								<?php } ?>
+							<?php } ?>
+						<?php } ?>
 						</div>
 					<?php } ?>
 				</div>

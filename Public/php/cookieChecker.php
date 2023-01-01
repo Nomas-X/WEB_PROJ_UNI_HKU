@@ -4,7 +4,7 @@
 	$last_name = $_COOKIE["last_name"] ?? NULL;
 	$email = $_COOKIE["email"] ?? NULL;
 	$student_number = $_COOKIE["student_number"] ?? NULL;
-	$department = $_COOKIE["department"] ?? NULL;
+	$student_courses = $_COOKIE["courses"] ?? NULL;
 	$logged_in = $_COOKIE["logged_in"] ?? false;
 
 	if (!$logged_in) {

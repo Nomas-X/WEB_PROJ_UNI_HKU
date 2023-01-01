@@ -79,9 +79,8 @@
 					
 					if ($login_type === "Student") {
 						setcookie("student_number", $user["student_number"], time() + $cookieExpireTime);
-						setcookie("department", $user["department"], time() + $cookieExpireTime);
-						mysqli_close($conn);
-						header("location: students.php");
+						setcookie("courses", $user["courses"], time() + $cookieExpireTime);
+						header("location: profile.php");
 					} elseif ($login_type === "Instructor") {
 						setcookie("email", $user["email"], time() + $cookieExpireTime);
 						header("location: profile.php");

@@ -1,10 +1,10 @@
 <?php
-	$errors = ["exam_name" => "", "exam_department" => "", "grades" => "", "missing_grade" => "", "other_errors" => ""];
+	$errors = ["exam_name" => "", "exam_course" => "", "exam_deadline" => "", "grades" => "", "missing_grade" => "", "other_errors" => ""];
 
 	if (isset($_POST["create_exam"])) {
 		$array_keys = array_keys($_POST);
 		$questions = $quesions_types = $answers_1 = $answers_2 = $answers_3 = $answers_4 = $correct_answers = $grades = [];
-		$exam_name = $exam_department = "";
+		$exam_name = $exam_course = $exam_deadline = "";
 		$grade_total = 0;
 
 		foreach($_POST as $key => $value) {
@@ -39,18 +39,23 @@
 				array_push($correct_answers, $value);
 			} elseif (preg_match("/^question_[0-9]+_grade$/", $key)) {
 				array_push($grades, $value);
-			} elseif ($key === "exam_department") {
-				$exam_department = $value;
+			} elseif ($key === "exam_course") {
+				$exam_course = $value;
 			} elseif ($key === "exam_name") {
 				$exam_name = $value;
+			} elseif ($key === "exam_deadline") {
+				$exam_deadline = $value;
 			}
 		}
 
 		if ($exam_name === "") {
 			$errors["exam_name"] = "Exam name is missing!";
 		}
-		if ($exam_department === "") {
-			$errors["exam_department"] = "Exam department is missing!";
+		if ($exam_course === "") {
+			$errors["exam_course"] = "Exam course is missing!";
+		}
+		if ($exam_deadline === "") {
+			$errors["exam_deadline"] = "Exam deadline is missing!";
 		}
 
 		$exam_name = mysqli_real_escape_string($conn, $_POST["exam_name"]);
@@ -81,9 +86,14 @@
 			echo "errors in the form!";
 		} else {
 			$exam_name = mysqli_real_escape_string($conn, $_POST["exam_name"]);
-			$exam_department = mysqli_real_escape_string($conn, $_POST["exam_department"]);	
+			$exam_course = mysqli_real_escape_string($conn, $_POST["exam_course"]);	
+			$exam_deadline = str_replace("T", " ", $exam_deadline);
+			$exam_deadline = $exam_deadline . ":00";
+			$exam_deadline = mysqli_real_escape_string($conn, $exam_deadline);
+			$creator = $first_name . " " . $last_name;
+			$creator = mysqli_real_escape_string($conn, $creator);
 
-			$sql = "INSERT INTO exams(name, department) VALUES('$exam_name','$exam_department')";
+			$sql = "INSERT INTO exams(name, course, created_by, deadline) VALUES('$exam_name','$exam_course', '$creator', '$exam_deadline')";
 
 			if (mysqli_query($conn, $sql)) {
 				$sql = "SELECT id FROM exams WHERE name = '$exam_name'";
@@ -106,7 +116,7 @@
 						echo "query error: " . mysqli_error($conn);
 					}
 				}
-				header("location: examList.php");
+				// header("location: createExams.php");
 			} else {
 				echo "query error: " . mysqli_error($conn);
 			}

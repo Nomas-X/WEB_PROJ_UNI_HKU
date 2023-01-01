@@ -17,7 +17,7 @@
 		mysqli_free_result($result);
 		
 		if ($exam) {
-			$sql = "SELECT * FROM exam_questions WHERE exam_id = $id";
+			$sql = "SELECT * FROM exam_questions WHERE exam_id = $id ORDER BY type DESC";
 
 			$result = mysqli_query($conn, $sql);
 
@@ -56,12 +56,20 @@
 							<p><?php echo htmlspecialchars($exam["name"]); ?></p>
 						</div>
 						<div>
-							<p>Department:</p>
-							<p><?php echo htmlspecialchars($exam["department"]); ?></p>
+							<p>Course:</p>
+							<p><?php echo htmlspecialchars($exam["course"]); ?></p>
+						</div>
+						<div>
+							<p>Created by:</p>
+							<p><?php echo htmlspecialchars($exam["created_by"]); ?></p>
 						</div>
 						<div>
 							<p>Created at:</p>
 							<p><?php echo htmlspecialchars($exam["created_at"]); ?></p>
+						</div>
+						<div>
+							<p>Deadline:</p>
+							<p><?php echo htmlspecialchars($exam["deadline"]); ?></p>
 						</div>
 						<hr class="preview_seperator">
 						<?php foreach ($questions_info as $question_info) { ?>

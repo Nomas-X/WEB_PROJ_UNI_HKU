@@ -1,8 +1,14 @@
 <?php 
-	$std_f_name = $std_l_name = $std_number = $std_password = $std_department = "";
-	$errors = ["std_f_name" => "", "std_l_name" => "", "std_number" => "", "std_password" => "", "std_department" => ""];
+	$std_f_name = $std_l_name = $std_number = $std_password = $std_courses = "";
+	$errors = ["std_f_name" => "", "std_l_name" => "", "std_number" => "", "std_password" => "", "std_courses" => ""];
 
 	if (isset($_POST["add_std_submit"])) {
+		foreach($_POST as $key => $value) {
+			if(preg_match("/^std_course_[0-9]+$/", $key)) {
+				$std_courses = $std_courses . $value . ",";
+			}
+		}
+
 		if (empty($_POST["std_f_name"])) {
 			$errors["std_f_name"] = "A first name is required!";
 		} else {
@@ -25,11 +31,11 @@
 			$errors["std_number"] = "A student number is required!";
 		} else {
 			$std_number = $_POST["std_number"];
-			if (!preg_match("/^\d+$/u", $std_number)) {
+			if (!preg_match("/^[0-9]+$/", $std_number)) {
 				$errors["std_number"] = "Invalid student number!";
 			}
 			$std_number = mysqli_real_escape_string($conn, $_POST["std_number"]);
-			$sql = "SELECT student_number FROM students WHERE student_number = $std_number";
+			$sql = "SELECT student_number FROM students WHERE student_number = '$std_number'";
 			$result = mysqli_query($conn, $sql);
 			$std_number_check = mysqli_fetch_assoc($result);
 			mysqli_free_result($result);
@@ -47,15 +53,6 @@
 			}
 		}
 
-		if (empty($_POST["std_department"])) {
-			$errors["std_f_name"] = "A department is required!";
-		} else {
-			$std_department = $_POST["std_department"];
-			if (!preg_match("/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u", $std_department)) {
-				$errors["std_department"] = "Invalid department!";
-			}
-		}
-
 		if (array_filter($errors)) {
 			echo "errors in the form!";
 		} else {
@@ -63,10 +60,10 @@
 			$std_l_name = mysqli_real_escape_string($conn, $_POST["std_l_name"]);	
 			$std_number = mysqli_real_escape_string($conn, $_POST["std_number"]);	
 			$std_password = mysqli_real_escape_string($conn, $_POST["std_password"]);
-			$std_department = mysqli_real_escape_string($conn, $_POST["std_department"]);	
+			$std_courses = mysqli_real_escape_string($conn, $std_courses);	
 
 			// Create sql
-			$sql = "INSERT INTO students(first_name, last_name, student_number, password, department) VALUES('$std_f_name','$std_l_name', '$std_number', '$std_password', '$std_department')";
+			$sql = "INSERT INTO students(first_name, last_name, student_number, password, courses) VALUES('$std_f_name','$std_l_name', '$std_number', '$std_password', '$std_courses')";
 
 			// Save to db and check
 			if (mysqli_query($conn, $sql)) {

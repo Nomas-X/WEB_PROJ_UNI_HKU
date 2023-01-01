@@ -7,7 +7,7 @@
 	$counter = 1;
 
 	// Write query for all students
-	$sql = "SELECT name, id, department, created_at FROM exams ORDER BY created_at";
+	$sql = "SELECT name, id, course, created_at, deadline, created_by FROM exams ORDER BY created_at";
 
 	// Make query and get result
 	$result = mysqli_query($conn, $sql);
@@ -46,9 +46,10 @@
 						<tr>
 							<th>No.</th>
 							<th>Exam Name:</th>
-							<th>Exam Department:</th>
-							<th>Exam ID:</th>
+							<th>Exam Course:</th>
+							<th>Created by:</th>
 							<th>Created at:</th>
+							<th>Deadline:</th>
 							<th>||</th>
 						</tr>
 					</thead>
@@ -57,9 +58,10 @@
 								<tr>
 									<td><?php echo htmlspecialchars($counter) . "."; $counter++; ?></td>
 									<td><?php echo htmlspecialchars($exam["name"]); ?></td>
-									<td><?php echo htmlspecialchars($exam["department"]); ?></td>
-									<td><?php echo htmlspecialchars($exam["id"]); ?></td>
+									<td><?php echo htmlspecialchars($exam["course"]); ?></td>
+									<td><?php echo htmlspecialchars($exam["created_by"]); ?></td>
 									<td><?php echo htmlspecialchars($exam["created_at"]); ?></td>
+									<td><?php echo htmlspecialchars($exam["deadline"]); ?></td>
 									<td class="exam_list_td">
 										<form action="examList.php" method="POST" class="exam_list_form">
 											<input type="hidden" name="exam_to_delete" value="<?php echo $exam["id"]; ?>">
@@ -67,8 +69,8 @@
 												<span>Delete</span>
 											</button>
 										</form>
-										<form action="examList.php" method="GET" class="exam_list_form">
-											<button type="button" name="exam_preview" value="preview" class="preview_exam" href="profile.php">
+										<form class="exam_list_form">
+											<button type="button" name="exam_preview" value="preview" class="preview_exam">
 												<a href="preview.php?id=<?php echo htmlspecialchars($exam["id"]); ?>" class="preview_link">
 													<span>Preview</span>
 												</a>

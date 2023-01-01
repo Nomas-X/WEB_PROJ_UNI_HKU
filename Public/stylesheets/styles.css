@@ -116,6 +116,11 @@ body {
 	margin-bottom: 0.9em;
 }
 
+.add_student_courses_p {
+	font-size: larger;
+	text-decoration: underline;
+}
+
 .create_inputs {
 	width: 40%;
 	font-size: larger;
@@ -199,6 +204,15 @@ body {
 	margin: 0 auto;
 }
 
+.create_exam_label {
+	font-size: x-large;
+	margin-left: 0.7em;
+}
+
+.deadline_input {
+	margin-top: 0;
+}
+
 .add_question_inactive {
 	margin-left: 1em;
 	font-size: 1em;
@@ -276,6 +290,10 @@ tr:nth-child(even) {
 	width: 13.4em;
 }
 
+.active_exam_list_td {
+	width: 0.5em;
+}
+
 .tableCaption {
 	font-size: x-large;
 	margin-bottom: 0.4em;
@@ -334,7 +352,7 @@ tr:nth-child(even) {
 	margin-right: auto;
 }
 
-.delete_student, .delete_exam, .preview_exam {
+.delete_student, .delete_exam, .preview_exam, .active_exam {
 	display: inline-block;
 	border-radius: 4px;
 	background-color: red;
@@ -355,19 +373,24 @@ tr:nth-child(even) {
 	width: 6em;
 }
 
-.preview_link {
+.active_exam {
+	background-color: #70c770;
+	width: 5em;
+}
+
+.preview_link, .exam_link {
 	text-decoration: none;
 	color: #FFFFFF;
 }
 
-.delete_student span, .delete_exam span, .preview_exam span {
+.delete_student span, .delete_exam span, .preview_exam span, .active_exam span {
 	cursor: pointer;
 	display: inline-block;
 	position: relative;
 	transition: 0.5s;
 }
 
-.delete_student span:after, .delete_exam span:after, .preview_exam span:after {
+.delete_student span:after, .delete_exam span:after, .preview_exam span:after, .active_exam span:after {
 	content: '\00bb';
 	position: absolute;
 	opacity: 0;
@@ -376,11 +399,11 @@ tr:nth-child(even) {
 	transition: 0.5s;
 }
 
-.delete_student:hover span, .delete_exam:hover span, .preview_exam:hover span {
+.delete_student:hover span, .delete_exam:hover span, .preview_exam:hover span, .active_exam:hover span {
 	padding-right: 25px;
 }
 
-.delete_student:hover span:after, .delete_exam:hover span:after, .preview_exam:hover span:after {
+.delete_student:hover span:after, .delete_exam:hover span:after, .preview_exam:hover span:after, .active_exam:hover span:after {
 	opacity: 1;
 	right: 0.7em;
 }

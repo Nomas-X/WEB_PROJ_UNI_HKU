@@ -2,6 +2,22 @@
 <?php include("../php/instructorsOnly.php"); ?>
 <?php include("../config/db_connect.php"); ?>
 <?php include("../php/createExam.php"); ?>
+<?php 
+	// Write query for all students
+	$sql = "SELECT * FROM courses";
+
+	// Make query and get result
+	$result = mysqli_query($conn, $sql);
+	
+	// Fetch the resulting rows as an array
+	$courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+	// Free result from memory
+	mysqli_free_result($result);
+
+	// Close the connection
+	mysqli_close($conn);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,20 +40,24 @@
 				<form>
 					<div class="errors_container">
 						<div class="exam_create_error"><?php echo $errors["exam_name"]; ?></div>
-						<div class="exam_create_error"><?php echo $errors["exam_department"]; ?></div>
+						<div class="exam_create_error"><?php echo $errors["exam_course"]; ?></div>
+						<div class="exam_create_error"><?php echo $errors["exam_deadline"]; ?></div>
 						<div class="exam_create_error"><?php echo $errors["missing_grade"]; ?></div>
 						<div class="exam_create_error"><?php echo $errors["grades"]; ?></div>
 						<div class="exam_create_error"><?php echo $errors["other_errors"]; ?></div>
 					</div>
 					<div>
 						<input type="text" class="create_inputs" id="name_selector" placeholder="Exam Name">
-						<select name="" class="create_inputs" id="department_selector">
-							<option value="">Department</option>
-							<option value="EEE">EEE | Eletrical and Electrons Engineering</option>
-							<option value="COME">COME | Computer Engineering</option>
-							<option value="CENG">CENG | Civil Engineering</option>
-							<option value="LAW">LAW | Laws and Rights</option>
+						<select name="" class="create_inputs" id="course_selector">
+							<option value="">Course</option>
+							<?php if ($courses) { ?>
+								<?php foreach ($courses as $course) { ?>
+									<option value="<?php echo htmlspecialchars($course["code"]); ?>"><?php echo htmlspecialchars($course["code"] . " | " . htmlspecialchars($course["name"])); ?></option>
+								<?php } ?>
+							<?php } ?>
 						</select>
+						<label class="create_exam_label">Deadline:</label>
+						<input type="datetime-local" class="create_inputs deadline_input" id="deadline_selector" placeholder="Deadline">
 					</div>
 					<hr>
 					<div>
@@ -55,8 +75,9 @@
 				<hr>
 				<form action="createExams.php" method="POST" class="questions_container" id="questions_container">
 					<div id="create_exam_submit">
-						<input type="hidden" name="exam_department" id="exam_department" value="">
 						<input type="hidden" name="exam_name" id="exam_name" value="">
+						<input type="hidden" name="exam_course" id="exam_course" value="">
+						<input type="hidden" name="exam_deadline" id="exam_deadline" value="">
 						<button type="submit" class="create_exam" id="create_exam" name="create_exam">Create Exam</button>
 					</div>
 				</form>
