@@ -42,7 +42,7 @@
 						<div>
 						<p>Department:</p>
 						<p><?php print_r($department); ?></p>
-						<div>
+						</div>
 					<?php } ?>
 				</div>
 				<form action="profile.php" method="POST">
@@ -59,7 +59,7 @@
 						<button type="submit" class="change_password_button" name="change_password" id="change_password">Change Password</button>
 					</div>
 				</form>
-		  </div>
+			</div>
 		</div>
 	</div>
 </body>

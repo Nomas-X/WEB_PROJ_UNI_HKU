@@ -80,10 +80,11 @@
 					if ($login_type === "Student") {
 						setcookie("student_number", $user["student_number"], time() + $cookieExpireTime);
 						setcookie("department", $user["department"], time() + $cookieExpireTime);
+						mysqli_close($conn);
 						header("location: students.php");
 					} elseif ($login_type === "Instructor") {
 						setcookie("email", $user["email"], time() + $cookieExpireTime);
-						header("location: examList.php");
+						header("location: profile.php");
 					}
 				} else {
 					$errors["login_wrong"] = "Wrong password or email/student ID!";

@@ -1,4 +1,5 @@
 <?php include("../php/cookieChecker.php"); ?>
+<?php include("../php/instructorsOnly.php"); ?>
 <?php include("../config/db_connect.php"); ?>
 <?php include("../php/createExam.php"); ?>
 

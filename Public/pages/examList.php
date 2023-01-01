@@ -1,4 +1,5 @@
 <?php include("../php/cookieChecker.php"); ?>
+<?php include("../php/instructorsOnly.php"); ?>
 <?php include("../config/db_connect.php"); ?>
 <?php include("../php/deleteExam.php"); ?>
 <?php 
@@ -19,7 +20,6 @@
 
 	// Close the connection
 	mysqli_close($conn);
-
 ?>
 
 <!DOCTYPE html>
@@ -63,11 +63,16 @@
 									<td class="exam_list_td">
 										<form action="examList.php" method="POST" class="exam_list_form">
 											<input type="hidden" name="exam_to_delete" value="<?php echo $exam["id"]; ?>">
-											<button type="submit" name="exam_delete" value="Delete" class="delete_exam"><span>Delete</span></button>
+											<button type="submit" name="exam_delete" value="Delete" class="delete_exam">
+												<span>Delete</span>
+											</button>
 										</form>
 										<form action="examList.php" method="GET" class="exam_list_form">
-											<input type="hidden" name="exam_to_preview" value="<?php echo $exam["id"]; ?>">
-											<button type="submit" name="exam_preview" value="preview" class="preview_exam"><span>Preview</span></button>
+											<button type="button" name="exam_preview" value="preview" class="preview_exam" href="profile.php">
+												<a href="preview.php?id=<?php echo htmlspecialchars($exam["id"]); ?>" class="preview_link">
+													<span>Preview</span>
+												</a>
+											</button>
 										</form>
 									</td>
 								</tr>

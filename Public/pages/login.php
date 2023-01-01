@@ -24,7 +24,6 @@
 					<div>
 						<label class="login_labels">Student or Instructor:</label>
 						<select name="login_type" id="login_type" class="login_inputs" onchange="loginTypeValidate()" required>
-							<option disabled disabled selected></option>
 							<option value="Student">Student</option>
 							<option value="Instructor">Instructor</option>
 						</select>
