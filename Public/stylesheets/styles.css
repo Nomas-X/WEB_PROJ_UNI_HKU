@@ -173,7 +173,7 @@ body {
 	margin-right: 0;
 }
 
-.change_password_button, .login_button, .add_question_active, .create_exam {
+.change_password_button, .login_button, .add_question_active, .create_exam, .submit_exam {
 	margin-left: 1em;
 	font-size: 1em;
 	background-color: #4189e6;
@@ -199,7 +199,7 @@ body {
 	font-size: 1.5em;
 }
 
-.create_exam {
+.create_exam, .submit_exam {
 	display: table;
 	margin: 0 auto;
 }
@@ -248,11 +248,11 @@ body {
 	border: none;
 }
 
-.change_password_button:hover, .add_student_button:hover, .login_button:hover, .add_question_active:hover, .create_exam:hover {
+.change_password_button:hover, .add_student_button:hover, .login_button:hover, .add_question_active:hover, .create_exam:hover, .submit_exam:hover {
 	background-color: #2b69bb
 }
 
-.change_password_button:active, .add_student_button:active, .login_button:active, .add_question_active:active, .create_exam:active {
+.change_password_button:active, .add_student_button:active, .login_button:active, .add_question_active:active, .create_exam:active, .submit_exam:active {
 	background-color: #2b69bb;
 	transform: translateY(2px);
 }
@@ -420,18 +420,24 @@ tr:nth-child(even) {
 
 .question_preview_title {
 	font-size: x-large;
-	color: black;
 }
 
 .question_preview_question {
 	font-size: larger;
 	margin-top: 0.5em;
-	color: black;
 }
 
 .question_preview_options, .question_preview_answer, .question_preview_grade {
 	margin-top: 0.3em;
+}
+
+.exam_answer {
+	margin-top: 2em;
 	color: black;
+}
+
+.exam_answer_input, .exam_answer_fill_blank {
+	font-size: large;
 }
 
 #login_type {

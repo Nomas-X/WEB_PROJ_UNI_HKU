@@ -2,7 +2,6 @@
 	$errors = ["exam_name" => "", "exam_course" => "", "exam_deadline" => "", "grades" => "", "missing_grade" => "", "other_errors" => ""];
 
 	if (isset($_POST["create_exam"])) {
-		$array_keys = array_keys($_POST);
 		$questions = $quesions_types = $answers_1 = $answers_2 = $answers_3 = $answers_4 = $correct_answers = $grades = [];
 		$exam_name = $exam_course = $exam_deadline = "";
 		$grade_total = 0;
@@ -116,7 +115,7 @@
 						echo "query error: " . mysqli_error($conn);
 					}
 				}
-				// header("location: createExams.php");
+				header("location: examList.php");
 			} else {
 				echo "query error: " . mysqli_error($conn);
 			}

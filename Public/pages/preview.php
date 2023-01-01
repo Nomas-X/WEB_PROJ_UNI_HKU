@@ -99,6 +99,5 @@
 			</div>
 		</div>
 	</div>
-	<script src="../javascript/students.js"></script>
 </body>
 </html>

@@ -16,9 +16,6 @@
 	// Free result from memory
 	mysqli_free_result($result);
 
-	// Close the connection
-	mysqli_close($conn);
-
 	$student_courses_array = explode(",", $student_courses);
 ?>
 
@@ -56,30 +53,36 @@
 						<?php foreach($exams as $exam) { ?>
 							<?php foreach($student_courses_array as $student_course) { ?>
 								<?php if ($exam["course"] === $student_course) { ?>
-									<tr>
-										<td><?php echo htmlspecialchars($counter) . "."; $counter++; ?></td>
-										<td><?php echo htmlspecialchars($exam["name"]); ?></td>
-										<td><?php echo htmlspecialchars($exam["course"]); ?></td>
-										<td><?php echo htmlspecialchars($exam["created_at"]); ?></td>
-										<td><?php echo htmlspecialchars($exam["deadline"]); ?></td>
-										<td class="active_exam_list_td">
-											<form class="exam_list_form">
-												<button type="button" name="exam_preview" value="preview" class="active_exam">
-													<a href="exam.php?id=<?php echo htmlspecialchars($exam["id"]); ?>" class="exam_link">
-														<span>Take</span>
-													</a>
-												</button>
-											</form>
-										</td>
-									</tr>
+									<?php $exam_id = $exam['id']; ?>
+									<?php $sql = "SELECT * FROM exam_results WHERE student_number = '$student_number' AND exam_id = $exam_id"; ?>
+									<?php $result = mysqli_query($conn, $sql); ?>
+									<?php $exam_taken_check = mysqli_fetch_assoc($result); ?>
+									<?php if ($exam_taken_check) {} else { ?>
+										<tr>
+											<td><?php echo htmlspecialchars($counter) . "."; $counter++; ?></td>
+											<td><?php echo htmlspecialchars($exam["name"]); ?></td>
+											<td><?php echo htmlspecialchars($exam["course"]); ?></td>
+											<td><?php echo htmlspecialchars($exam["created_at"]); ?></td>
+											<td><?php echo htmlspecialchars($exam["deadline"]); ?></td>
+											<td class="active_exam_list_td">
+												<form class="exam_list_form">
+													<button type="button" name="exam_take" value="exam" class="active_exam">
+														<a href="exam.php?id=<?php echo htmlspecialchars($exam["id"]); ?>" class="exam_link">
+															<span>Take</span>
+														</a>
+													</button>
+												</form>
+											</td>
+										</tr>
+									<?php } ?>
 								<?php } ?>
 							<?php } ?>
 						<?php } ?>
+						<?php mysqli_close($conn); ?>
 					</tbody>
 				</table>
 		  </div>
 		</div>
 	</div>
-	<script src="../javascript/students.js"></script>
 </body>
 </html>
