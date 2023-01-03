@@ -58,22 +58,24 @@
 									<?php $result = mysqli_query($conn, $sql); ?>
 									<?php $exam_taken_check = mysqli_fetch_assoc($result); ?>
 									<?php if ($exam_taken_check) {} else { ?>
-										<tr>
-											<td><?php echo htmlspecialchars($counter) . "."; $counter++; ?></td>
-											<td><?php echo htmlspecialchars($exam["name"]); ?></td>
-											<td><?php echo htmlspecialchars($exam["course"]); ?></td>
-											<td><?php echo htmlspecialchars($exam["created_at"]); ?></td>
-											<td><?php echo htmlspecialchars($exam["deadline"]); ?></td>
-											<td class="active_exam_list_td">
-												<form class="exam_list_form">
-													<button type="button" name="exam_take" value="exam" class="active_exam">
-														<a href="exam.php?id=<?php echo htmlspecialchars($exam["id"]); ?>" class="exam_link">
-															<span>Take</span>
-														</a>
-													</button>
-												</form>
-											</td>
-										</tr>
+										<?php if (time() < strtotime($exam["deadline"])) {?>
+											<tr>
+												<td><?php echo htmlspecialchars($counter) . "."; $counter++; ?></td>
+												<td><?php echo htmlspecialchars($exam["name"]); ?></td>
+												<td><?php echo htmlspecialchars($exam["course"]); ?></td>
+												<td><?php echo htmlspecialchars($exam["created_at"]); ?></td>
+												<td><?php echo htmlspecialchars($exam["deadline"]); ?></td>
+												<td class="active_exam_list_td">
+													<form class="exam_list_form">
+														<button type="button" name="exam_take" value="exam" class="active_exam">
+															<a href="exam.php?id=<?php echo htmlspecialchars($exam["id"]); ?>" class="exam_link">
+																<span>Take</span>
+															</a>
+														</button>
+													</form>
+												</td>
+											</tr>
+										<?php } ?>
 									<?php } ?>
 								<?php } ?>
 							<?php } ?>

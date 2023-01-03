@@ -72,6 +72,11 @@
 							<p class="exam_has_been_deleted">The exam you are trying to take does not exist or has been deleted!</p>
 							<p class="exam_has_been_deleted"><a href="activeExams.php">Go Back!</a></p>
 						</div>
+					<?php } elseif (time() > strtotime($exam["deadline"])) { ?>
+						<div>
+							<p class="exam_has_been_deleted">The exam you are trying to take is beyond it's deadline!</p>
+							<p class="exam_has_been_deleted"><a href="activeExams.php">Go Back!</a></p>
+						</div>
 					<?php } elseif (!$exam_result_check) { ?>
 						<div>
 							<p>Exam name:</p>

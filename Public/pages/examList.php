@@ -7,7 +7,7 @@
 	$counter = 1;
 
 	// Write query for all students
-	$sql = "SELECT name, id, course, created_at, deadline, created_by FROM exams ORDER BY created_at";
+	$sql = "SELECT name, id, course, created_at, deadline, created_by FROM exams ORDER BY deadline DESC";
 
 	// Make query and get result
 	$result = mysqli_query($conn, $sql);
@@ -48,6 +48,7 @@
 							<th>Exam Name:</th>
 							<th>Exam Course:</th>
 							<th>Created by:</th>
+							<th>Status:</th>
 							<th>Created at:</th>
 							<th>Deadline:</th>
 							<th>||</th>
@@ -55,11 +56,13 @@
 					</thead>
 					<tbody>
 						<?php foreach($exams as $exam) { ?>
+							<?php $exam_status = strtotime($exam["deadline"]) > time() ? "In Progress" : "Ended"; ?>
 								<tr>
 									<td><?php echo htmlspecialchars($counter) . "."; $counter++; ?></td>
 									<td><?php echo htmlspecialchars($exam["name"]); ?></td>
 									<td><?php echo htmlspecialchars($exam["course"]); ?></td>
 									<td><?php echo htmlspecialchars($exam["created_by"]); ?></td>
+									<td><?php echo htmlspecialchars($exam_status); ?></td>
 									<td><?php echo htmlspecialchars($exam["created_at"]); ?></td>
 									<td><?php echo htmlspecialchars($exam["deadline"]); ?></td>
 									<td class="exam_list_td">

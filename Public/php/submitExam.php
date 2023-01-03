@@ -30,6 +30,14 @@
 					if ($question["type"] === "essay") {
 						$status = "PENDING";
 						$essay = mysqli_real_escape_string($conn, $answers[$i]);
+						$essay_max_grade = $question["grade"];
+						$essay_max_grade = mysqli_real_escape_string($conn, $essay_max_grade);
+						$question_id = $question["question_id"];
+						$question_id = mysqli_real_escape_string($conn, $question_id);
+						$sql = "INSERT INTO exam_essays(exam_id, question_id, student_number, essay_max_grade, essay) VALUES ($exam_id, $question_id, '$student_number', $essay_max_grade, '$essay')";
+						if (!mysqli_query($conn, $sql)) {
+							echo "query error: " . mysqli_error($conn);
+						}
 					} elseif ($question["type"] === "multiple_choices") {
 						$answers_array = explode(",", $answers[$i]);
 						$correct_answers_array = explode(",", $question["correct_answer"]);
@@ -57,7 +65,7 @@
 		}
 
 		
-		$sql = "INSERT INTO exam_results(student_number, exam_id, status, grade, essay) VALUES ('$student_number', $exam_id, '$status', $grade_total, '$essay')";
+		$sql = "INSERT INTO exam_results(student_number, exam_id, status, grade) VALUES ('$student_number', $exam_id, '$status', $grade_total)";
 
 		if (!mysqli_query($conn, $sql)) {
 			echo "query error: " . mysqli_error($conn);

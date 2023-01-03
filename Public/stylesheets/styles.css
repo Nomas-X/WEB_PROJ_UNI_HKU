@@ -173,7 +173,7 @@ body {
 	margin-right: 0;
 }
 
-.change_password_button, .login_button, .add_question_active, .create_exam, .submit_exam {
+.change_password_button, .login_button, .add_question_active, .create_exam, .submit_exam, .grade_button {
 	margin-left: 1em;
 	font-size: 1em;
 	background-color: #4189e6;
@@ -202,6 +202,11 @@ body {
 .create_exam, .submit_exam {
 	display: table;
 	margin: 0 auto;
+}
+
+.grade_button {
+	border-radius: 15px;
+	padding-top: 0.5em;
 }
 
 .create_exam_label {
@@ -248,11 +253,11 @@ body {
 	border: none;
 }
 
-.change_password_button:hover, .add_student_button:hover, .login_button:hover, .add_question_active:hover, .create_exam:hover, .submit_exam:hover {
+.change_password_button:hover, .add_student_button:hover, .login_button:hover, .add_question_active:hover, .create_exam:hover, .submit_exam:hover, .grade_button:hover {
 	background-color: #2b69bb
 }
 
-.change_password_button:active, .add_student_button:active, .login_button:active, .add_question_active:active, .create_exam:active, .submit_exam:active {
+.change_password_button:active, .add_student_button:active, .login_button:active, .add_question_active:active, .create_exam:active, .submit_exam:active, .grade_button:active {
 	background-color: #2b69bb;
 	transform: translateY(2px);
 }
@@ -282,7 +287,7 @@ tr:nth-child(even) {
 	background-color: #dddddd;
 }
 
-.delete_std_td {
+.delete_std_td, .essay_list_td {
 	width: 1em;	
 }
 
@@ -352,7 +357,7 @@ tr:nth-child(even) {
 	margin-right: auto;
 }
 
-.delete_student, .delete_exam, .preview_exam, .active_exam {
+.delete_student, .delete_exam, .preview_exam, .active_exam, .grade_essay {
 	display: inline-block;
 	border-radius: 4px;
 	background-color: red;
@@ -373,24 +378,24 @@ tr:nth-child(even) {
 	width: 6em;
 }
 
-.active_exam {
+.active_exam, .grade_essay {
 	background-color: #70c770;
 	width: 5em;
 }
 
-.preview_link, .exam_link {
+.preview_link, .exam_link, .grade_link {
 	text-decoration: none;
 	color: #FFFFFF;
 }
 
-.delete_student span, .delete_exam span, .preview_exam span, .active_exam span {
+.delete_student span, .delete_exam span, .preview_exam span, .active_exam span, .grade_essay span {
 	cursor: pointer;
 	display: inline-block;
 	position: relative;
 	transition: 0.5s;
 }
 
-.delete_student span:after, .delete_exam span:after, .preview_exam span:after, .active_exam span:after {
+.delete_student span:after, .delete_exam span:after, .preview_exam span:after, .active_exam span:after, .grade_essay span:after {
 	content: '\00bb';
 	position: absolute;
 	opacity: 0;
@@ -399,11 +404,11 @@ tr:nth-child(even) {
 	transition: 0.5s;
 }
 
-.delete_student:hover span, .delete_exam:hover span, .preview_exam:hover span, .active_exam:hover span {
+.delete_student:hover span, .delete_exam:hover span, .preview_exam:hover span, .active_exam:hover span, .grade_essay:hover span {
 	padding-right: 25px;
 }
 
-.delete_student:hover span:after, .delete_exam:hover span:after, .preview_exam:hover span:after, .active_exam:hover span:after {
+.delete_student:hover span:after, .delete_exam:hover span:after, .preview_exam:hover span:after, .active_exam:hover span:after, .grade_essay:hover span::after {
 	opacity: 1;
 	right: 0.7em;
 }
@@ -438,6 +443,23 @@ tr:nth-child(even) {
 
 .exam_answer_input, .exam_answer_fill_blank {
 	font-size: large;
+}
+
+.essay_answer_title {
+	font-size: xx-large;
+}
+
+.essay {
+	color: black;
+	width: 80%;
+	padding: 2em;
+	background-color: #e9e9e9;
+	border-radius: 4px;
+	white-space: pre-wrap;
+}
+
+.essay_grade_input {
+	width: 4em;
 }
 
 #login_type {
