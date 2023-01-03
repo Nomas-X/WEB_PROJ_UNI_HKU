@@ -57,27 +57,6 @@ body {
 .wrapper .sidebar ul li:hover a {
 	color: #fff;
 }
- 
-.wrapper .sidebar .social_media {
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	display: flex;
-}
-
-.wrapper .sidebar .social_media a {
-	display: block;
-	width: 40px;
-	background: #2b69bb;
-	height: 40px;
-	line-height: 45px;
-	text-align: center;
-	margin: 0 5px;
-	color: #bdb8d7;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-}
 
 .wrapper .main_content {
 	width: 100%;
@@ -173,7 +152,7 @@ body {
 	margin-right: 0;
 }
 
-.change_password_button, .login_button, .add_question_active, .create_exam, .submit_exam, .grade_button {
+.change_password_button, .login_button, .add_question_active, .create_exam, .submit_exam, .grade_button, .add_student_button {
 	margin-left: 1em;
 	font-size: 1em;
 	background-color: #4189e6;
@@ -187,6 +166,12 @@ body {
 	color: #fff;
 	background-color: #4189e6;
 	border: none;
+	border-radius: 15px;
+}
+
+.add_student_button {
+	padding: 7px 15px;
+	margin-left: 0;
 }
 
 .change_password_button {

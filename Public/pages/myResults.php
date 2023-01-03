@@ -2,19 +2,14 @@
 <?php include("../php/studentsOnly.php"); ?>
 <?php include("../config/db_connect.php"); ?>
 <?php 
-	// Define counter
 	$counter = 1;
 
-	// Write query for all results
 	$sql = "SELECT exam_id, status, grade FROM exam_results WHERE student_number = '$student_number' ORDER BY submitted_at";
 
-	// Make query and get result
 	$result = mysqli_query($conn, $sql);
 	
-	// Fetch the resulting rows as an array
 	$exam_results = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-	// Free result from memory
 	mysqli_free_result($result);
 ?>
 
@@ -26,7 +21,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../stylesheets/styles.css">
 	<script src="https://kit.fontawesome.com/3646abfb94.js" crossorigin="anonymous"></script>
-	<title>Document</title>
+	<title>My Results</title>
+	<link rel="icon" href="../images/logo.png">
 </head>
 <body>
 	<div class="wrapper">

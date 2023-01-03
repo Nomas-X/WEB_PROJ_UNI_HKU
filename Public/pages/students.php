@@ -4,33 +4,24 @@
 <?php include("../php/addStudent.php"); ?>
 <?php include("../php/removeStudent.php"); ?>
 <?php 
-	// Define counter
 	$counter = 1;
-	// Write query for all students
+
 	$sql = "SELECT first_name, last_name, student_number, courses FROM students ORDER BY first_name";
 
-	// Make query and get result
 	$result = mysqli_query($conn, $sql);
 	
-	// Fetch the resulting rows as an array
 	$students = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-	// Free result from memory
 	mysqli_free_result($result);
 
-	// Write query for all students
 	$sql = "SELECT * FROM courses";
 
-	// Make query and get result
 	$result = mysqli_query($conn, $sql);
 	
-	// Fetch the resulting rows as an array
 	$courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-	// Free result from memory
 	mysqli_free_result($result);
 
-	// Close the connection
 	mysqli_close($conn);
 ?>
 
@@ -42,7 +33,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../stylesheets/styles.css">
 	<script src="https://kit.fontawesome.com/3646abfb94.js" crossorigin="anonymous"></script>
-	<title>Document</title>
+	<title>Students List</title>
+	<link rel="icon" href="../images/logo.png">
 </head>
 <body>
 	<div class="wrapper">

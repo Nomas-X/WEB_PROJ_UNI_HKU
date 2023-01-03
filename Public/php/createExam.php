@@ -58,9 +58,13 @@
 		}
 
 		$exam_name = mysqli_real_escape_string($conn, $_POST["exam_name"]);
+
 		$sql = "SELECT name FROM exams WHERE name = '$exam_name'";
+
 		$result = mysqli_query($conn, $sql);
+
 		$exam_name_check = mysqli_fetch_assoc($result);
+
 		mysqli_free_result($result);
 
 		if ($exam_name_check) {
@@ -96,9 +100,13 @@
 
 			if (mysqli_query($conn, $sql)) {
 				$sql = "SELECT id FROM exams WHERE name = '$exam_name'";
+
 				$result = mysqli_query($conn, $sql);
+
 				$exam_id = mysqli_fetch_assoc($result);
+
 				mysqli_free_result($result);
+
 				$exam_id = $exam_id["id"];
 
 				for ($i = 0; $i < count($questions); $i++) {
@@ -110,7 +118,9 @@
 					$answer_4 = mysqli_real_escape_string($conn, $answers_4[$i]);
 					$correct_answer = mysqli_real_escape_string($conn, $correct_answers[$i]);
 					$grade = mysqli_real_escape_string($conn, $grades[$i]);
+
 					$sql = "INSERT INTO exam_questions(question, type, answer_1, answer_2, answer_3, answer_4, correct_answer, grade, exam_id) VALUES('$question', '$quesion_type', '$answer_1', '$answer_2', '$answer_3', '$answer_4', '$correct_answer', '$grade', '$exam_id')";
+					
 					if (!mysqli_query($conn, $sql)) {
 						echo "query error: " . mysqli_error($conn);
 					}

@@ -15,8 +15,11 @@
 				$sql = "SELECT password FROM students WHERE student_number = $student_number";
 			}
 			$result = mysqli_query($conn, $sql);
+
 			$password_check = mysqli_fetch_assoc($result);
+
 			mysqli_free_result($result);
+			
 			if ($password_check["password"] !== $current_password) {
 				$errors["current_password"] = "Incorrect current password!";
 			}

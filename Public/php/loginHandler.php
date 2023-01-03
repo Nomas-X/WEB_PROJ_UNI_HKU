@@ -51,23 +51,18 @@
 			$login_id = mysqli_real_escape_string($conn, $_POST["login_id"]);
 			$login_password = mysqli_real_escape_string($conn, $_POST["login_password"]);
 
-			// Create sql
 			if ($login_type === "Student") {
 				$sql = "SELECT * FROM students WHERE student_number = $login_id";
 			} elseif ($login_type === "Instructor") {
 				$sql = "SELECT * FROM instructors WHERE email = '$login_id'";
 			}
 
-			// Make query and get result
 			$result = mysqli_query($conn, $sql);
 			
-			// Fetch the resulting rows as an array
 			$user = mysqli_fetch_assoc($result);
 
-			// Free result from memory
 			mysqli_free_result($result);
 
-			// Close the connection
 			mysqli_close($conn);
 
 			if ($user) {

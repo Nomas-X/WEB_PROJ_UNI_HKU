@@ -35,10 +35,15 @@
 				$errors["std_number"] = "Invalid student number!";
 			}
 			$std_number = mysqli_real_escape_string($conn, $_POST["std_number"]);
+
 			$sql = "SELECT student_number FROM students WHERE student_number = '$std_number'";
+
 			$result = mysqli_query($conn, $sql);
+
 			$std_number_check = mysqli_fetch_assoc($result);
+
 			mysqli_free_result($result);
+
 			if ($std_number_check) {
 				$errors["std_number"] = "Student ID already in the database!";
 			}
@@ -62,11 +67,10 @@
 			$std_password = mysqli_real_escape_string($conn, $_POST["std_password"]);
 			$std_courses = mysqli_real_escape_string($conn, $std_courses);	
 
-			// Create sql
 			$sql = "INSERT INTO students(first_name, last_name, student_number, password, courses) VALUES('$std_f_name','$std_l_name', '$std_number', '$std_password', '$std_courses')";
 
-			// Save to db and check
 			if (mysqli_query($conn, $sql)) {
+				mysqli_close($conn);
 				header("location: students.php");
 			} else {
 				echo "query error: " . mysqli_error($conn);

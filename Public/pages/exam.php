@@ -3,7 +3,6 @@
 <?php include("../config/db_connect.php"); ?>
 <?php include("../php/submitExam.php"); ?>
 <?php 
-	// Check GET request for the exam id.
 	if(isset($_GET["id"])) {
 		$question_counter = 1;
 
@@ -51,7 +50,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../stylesheets/styles.css">
 	<script src="https://kit.fontawesome.com/3646abfb94.js" crossorigin="anonymous"></script>
-	<title>Document</title>
+	<title><?php echo htmlspecialchars($exam["name"]); ?></title>
+	<link rel="icon" href="../images/logo.png">
 </head>
 <body>
 	<div class="wrapper">

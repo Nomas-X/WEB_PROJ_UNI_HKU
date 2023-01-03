@@ -1,20 +1,15 @@
 <?php include("../php/cookieChecker.php"); ?>
 <?php include("../php/instructorsOnly.php"); ?>
 <?php include("../config/db_connect.php"); ?>
-<?php 
-	// Define counter
+<?php
 	$counter = 1;
 
-	// Write query for all essays
 	$sql = "SELECT essay_id, exam_id, student_number, essay_max_grade FROM exam_essays WHERE status = 'PENDING' ORDER BY exam_id";
 
-	// Make query and get result
 	$result = mysqli_query($conn, $sql);
-	
-	// Fetch the resulting rows as an array
+
 	$essays = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-	// Free result from memory
 	mysqli_free_result($result);
 ?>
 
@@ -26,7 +21,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../stylesheets/styles.css">
 	<script src="https://kit.fontawesome.com/3646abfb94.js" crossorigin="anonymous"></script>
-	<title>Document</title>
+	<title>Grade Essays</title>
+	<link rel="icon" href="../images/logo.png">
 </head>
 <body>
 	<div class="wrapper">

@@ -1,5 +1,4 @@
 <?php
-
 	if (isset($_POST["submit_exam"])) {
 		$answers = $questions_ids = [];
 		$exam_id = 0;
@@ -34,7 +33,9 @@
 						$essay_max_grade = mysqli_real_escape_string($conn, $essay_max_grade);
 						$question_id = $question["question_id"];
 						$question_id = mysqli_real_escape_string($conn, $question_id);
+
 						$sql = "INSERT INTO exam_essays(exam_id, question_id, student_number, essay_max_grade, essay) VALUES ($exam_id, $question_id, '$student_number', $essay_max_grade, '$essay')";
+
 						if (!mysqli_query($conn, $sql)) {
 							echo "query error: " . mysqli_error($conn);
 						}
@@ -64,7 +65,6 @@
 			}
 		}
 
-		
 		$sql = "INSERT INTO exam_results(student_number, exam_id, status, grade) VALUES ('$student_number', $exam_id, '$status', $grade_total)";
 
 		if (!mysqli_query($conn, $sql)) {
