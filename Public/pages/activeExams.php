@@ -1,4 +1,5 @@
 <?php include("../php/cookieChecker.php"); ?>
+<?php include("../php/studentsOnly.php"); ?>
 <?php include("../config/db_connect.php"); ?>
 <?php 
 	// Define counter

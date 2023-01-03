@@ -1,7 +1,6 @@
 <?php include("../php/cookieChecker.php"); ?>
-<?php include("../php/instructorsOnly.php"); ?>
+<?php include("../php/studentsOnly.php"); ?>
 <?php include("../config/db_connect.php"); ?>
-<?php include("../php/gradeEssay.php"); ?>
 <?php 
 	// Check GET request for the exam id.
 	if(isset($_GET["id"])) {
@@ -9,7 +8,7 @@
 
 		$id = mysqli_real_escape_string($conn, $_GET["id"]);
 
-		$sql = "SELECT * FROM exam_essays WHERE essay_id = $id AND status = 'PENDING'";
+		$sql = "SELECT * FROM exam_essays WHERE essay_id = $id AND status = 'GRADED'";
 
 		$result = mysqli_query($conn, $sql);
 
@@ -46,7 +45,7 @@
 <body>
 	<div class="wrapper">
 		<div class="sidebar">
-			<?php include("../templates/sideBarInstructor.php") ?>
+			<?php include("../templates/sideBarStudent.php") ?>
 		</div>
 		<div class="main_content">
 			<div class="header">Welcome <?php print_r($first_name . " " . $last_name); ?>!</div>
@@ -58,29 +57,20 @@
 							<p><?php echo htmlspecialchars($question["question"]); ?></p>
 						</div>
 						<div>
-							<p>Question Grade:</p>
-							<p><?php echo htmlspecialchars($essay["essay_max_grade"]); ?></p>
+							<p>Your Grade:</p>
+							<p><?php echo htmlspecialchars($essay["final_grade"] . " / " . $essay["essay_max_grade"]); ?></p>
 						</div>
-						<form action="essay.php" method="POST">
-							<div>
-								<input type="number" class="essay_grade_input" name="submitted_grade" value="0" min="0" max="<?php echo htmlspecialchars($essay["essay_max_grade"]); ?>">
-								<input type="hidden" name="essay_id" value="<?php echo htmlspecialchars($essay["essay_id"]); ?>">
-								<input type="hidden" name="exam_id" value="<?php echo htmlspecialchars($essay["exam_id"]); ?>">
-								<input type="hidden" name="student_number" value="<?php echo htmlspecialchars($essay["student_number"]); ?>">
-								<button type="submit" class="grade_button" name="submit_grade">Finalize Grade</button>
-							</div>
-						</form>
 						<hr class="preview_seperator">
 						<div>
-							<p class="essay_answer_title">Student's Answer:</p>
+							<p class="essay_answer_title">Your Answer:</p>
 						</div>
 						<div>
 							<pre class="essay_preview"><?php echo htmlspecialchars($essay["essay"]); ?></pre>
 						</div>
 					<?php } else { ?>
 						<div>
-							<p class="exam_has_been_deleted">The essay you are trying to grade does not exist or has already been graded!</p>
-							<p class="exam_has_been_deleted"><a href="gradeEssays.php">Go Back!</a></p>
+							<p class="exam_has_been_deleted">The essay you are trying to check does not exist or has not yet been graded!</p>
+							<p class="exam_has_been_deleted"><a href="myEssays.php">Go Back!</a></p>
 						</div>
 					<?php } ?>
 				</div>

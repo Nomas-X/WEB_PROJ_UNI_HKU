@@ -357,7 +357,7 @@ tr:nth-child(even) {
 	margin-right: auto;
 }
 
-.delete_student, .delete_exam, .preview_exam, .active_exam, .grade_essay {
+.delete_student, .delete_exam, .preview_exam, .active_exam, .grade_essay, .check_essay {
 	display: inline-block;
 	border-radius: 4px;
 	background-color: red;
@@ -378,6 +378,10 @@ tr:nth-child(even) {
 	width: 6em;
 }
 
+.check_essay {
+	background-color: #4189e6;
+}
+
 .active_exam, .grade_essay {
 	background-color: #70c770;
 	width: 5em;
@@ -388,14 +392,14 @@ tr:nth-child(even) {
 	color: #FFFFFF;
 }
 
-.delete_student span, .delete_exam span, .preview_exam span, .active_exam span, .grade_essay span {
+.delete_student span, .delete_exam span, .preview_exam span, .active_exam span, .grade_essay span, .check_essay span {
 	cursor: pointer;
 	display: inline-block;
 	position: relative;
 	transition: 0.5s;
 }
 
-.delete_student span:after, .delete_exam span:after, .preview_exam span:after, .active_exam span:after, .grade_essay span:after {
+.delete_student span:after, .delete_exam span:after, .preview_exam span:after, .active_exam span:after, .grade_essay span:after, .check_essay span:after {
 	content: '\00bb';
 	position: absolute;
 	opacity: 0;
@@ -404,11 +408,11 @@ tr:nth-child(even) {
 	transition: 0.5s;
 }
 
-.delete_student:hover span, .delete_exam:hover span, .preview_exam:hover span, .active_exam:hover span, .grade_essay:hover span {
+.delete_student:hover span, .delete_exam:hover span, .preview_exam:hover span, .active_exam:hover span, .grade_essay:hover span, .check_essay:hover span {
 	padding-right: 25px;
 }
 
-.delete_student:hover span:after, .delete_exam:hover span:after, .preview_exam:hover span:after, .active_exam:hover span:after, .grade_essay:hover span::after {
+.delete_student:hover span:after, .delete_exam:hover span:after, .preview_exam:hover span:after, .active_exam:hover span:after, .grade_essay:hover span:after, .check_essay:hover span:after {
 	opacity: 1;
 	right: 0.7em;
 }
@@ -449,7 +453,7 @@ tr:nth-child(even) {
 	font-size: xx-large;
 }
 
-.essay {
+.essay_preview {
 	color: black;
 	width: 80%;
 	padding: 2em;
